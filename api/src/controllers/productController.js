@@ -10,9 +10,9 @@ cloudinary.config({
 // Read Product
 const readFunc = async (req, res) => {
   try {
-    if (req.query.page && req.query.limit && req.query.category) {
-      let { page, limit, category } = req.query;
-      let data = await productService.readProductWithCategory(+page, +limit, category);
+    if (req.query.page && req.query.limit && req.query.categories) {
+      let { page, limit, categories } = req.query;
+      let data = await productService.readProductWithCategories(+page, +limit, categories);
       return res.status(200).json({
         EM: data.EM,
         EC: data.EC,
@@ -103,31 +103,26 @@ const createFunc = async (req, res) => {
   try {
     const {
       title,
+      price,
+      version,
+      quantity,
       imageAvatar,
       imageDetail,
-      description,
-      price,
-      numberOfFloors,
-      width,
-      length,
-      roomNumber,
-      facade,
-      productCode,
-      categoryId,
+      colors,
+      percentDiscount,
+      categoriesId
     } = req.body.data;
 
     if (
       !title ||
+      !price ||
+      !version ||
+      !quantity ||
       !imageAvatar ||
       !imageDetail ||
-      !price ||
-      !numberOfFloors ||
-      !width ||
-      !length ||
-      !roomNumber ||
-      !facade ||
-      !productCode ||
-      !categoryId
+      !colors ||
+      !percentDiscount ||
+      !categoriesId
     ) {
       return res.status(200).json({
         EM: "Missing Required Parameters",
@@ -136,14 +131,8 @@ const createFunc = async (req, res) => {
       });
     }
 
-    // Upload cloudinary imageAvatar
     const imageCloudinaryAvatar = await uploadCloudinaryList(imageAvatar, "blueprint_image_avatar");
-
-    // Upload cloudinary imageAvatar
     const imageCloudinaryDetail = await uploadCloudinaryList(imageDetail, "blueprint_image_detail");
-
-    // const newImageAvatar = JSON.stringify(imageCloudinaryAvatar);
-    // const newImageDetail = JSON.stringify(imageCloudinaryDetail);
 
     const newData = {
       ...req.body.data,
@@ -176,7 +165,6 @@ const updateFunc = async (req, res) => {
         imageAvatar,
         "blueprint_image_avatar"
       );
-      // const newImageAvatar = JSON.stringify(imageCloudinaryAvatar);
       const newData = {
         ...req.body.data,
         imageAvatar: imageCloudinaryAvatar,
@@ -193,7 +181,6 @@ const updateFunc = async (req, res) => {
         imageDetail,
         "blueprint_image_detail"
       );
-      // const newImageDetail = JSON.stringify(imageCloudinaryDetail);
       const newData = {
         ...req.body.data,
         imageDetail: imageCloudinaryDetail,
