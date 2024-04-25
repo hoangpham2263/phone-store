@@ -1,14 +1,14 @@
 import db from "../models/index";
 
-// Read Category
-const readCategory = async () => {
+// Read Categories
+const readCategories = async () => {
   try {
-    let data = await db.Category.findAll({
+    let data = await db.Categories.findAll({
       attributes: ["id", "name", "description"],
       order: [["name", "ASC"]],
     });
     return {
-      EM: "Read category success",
+      EM: "Read categories success",
       EC: 0,
       DT: data,
     };
@@ -21,10 +21,10 @@ const readCategory = async () => {
     };
   }
 };
-const readCategoryWithPagination = async (page, limit) => {
+const readCategoriesWithPagination = async (page, limit) => {
   try {
     let offset = (page - 1) * limit;
-    let { count, rows } = await db.Category.findAndCountAll({
+    let { count, rows } = await db.Categories.findAndCountAll({
       offset: offset,
       limit: limit,
       attributes: ["id", "name", "description"],
@@ -34,10 +34,10 @@ const readCategoryWithPagination = async (page, limit) => {
     let data = {
       totalRows: count,
       totalPages: totalPages,
-      categorys: rows,
+      categoriess: rows,
     };
     return {
-      EM: "Read category success",
+      EM: "Read categories success",
       EC: 0,
       DT: data,
     };
@@ -51,15 +51,15 @@ const readCategoryWithPagination = async (page, limit) => {
   }
 };
 
-// Create Category
-const createCategory = async (data) => {
+// Create Categories
+const createCategories = async (data) => {
   try {
-    await db.Category.create({
+    await db.Categories.create({
       name: data.name,
       description: data.description,
     });
     return {
-      EM: "A category is created successfully!",
+      EM: "A categories is created successfully!",
       EC: 0,
       DT: [],
     };
@@ -72,27 +72,27 @@ const createCategory = async (data) => {
   }
 };
 
-// Update Category
-const updateCategory = async (data) => {
+// Update Categories
+const updateCategories = async (data) => {
   try {
-    let category = await db.Category.findOne({
+    let categories = await db.Categories.findOne({
       where: {
         id: data.id,
       },
     });
-    if (category) {
-      await category.update({
+    if (categories) {
+      await categories.update({
         name: data.name,
         description: data.description,
       });
       return {
-        EM: "Update category success",
+        EM: "Update categories success",
         EC: 0,
         DT: [],
       };
     } else {
       return {
-        EM: "Category not exist",
+        EM: "Categories not exist",
         EC: 2,
         DT: [],
       };
@@ -107,24 +107,24 @@ const updateCategory = async (data) => {
   }
 };
 
-// Delete Category
-const deleteCategory = async (id) => {
+// Delete Categories
+const deleteCategories = async (id) => {
   try {
-    let category = await db.Category.findOne({
+    let categories = await db.Categories.findOne({
       where: {
         id: id,
       },
     });
-    if (category) {
-      await category.destroy();
+    if (categories) {
+      await categories.destroy();
       return {
-        EM: "Delete category success",
+        EM: "Delete categories success",
         EC: 0,
         DT: [],
       };
     } else {
       return {
-        EM: "Category not exist",
+        EM: "Categories not exist",
         EC: 2,
         DT: [],
       };
@@ -139,9 +139,9 @@ const deleteCategory = async (id) => {
 };
 
 module.exports = {
-  readCategory,
-  readCategoryWithPagination,
-  createCategory,
-  updateCategory,
-  deleteCategory,
+  readCategories,
+  readCategoriesWithPagination,
+  createCategories,
+  updateCategories,
+  deleteCategories,
 };

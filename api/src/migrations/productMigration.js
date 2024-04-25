@@ -12,11 +12,17 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      categoryId: {
-        type: Sequelize.INTEGER,
-      },
       title: {
         type: Sequelize.STRING,
+      },
+      price: {
+        type: Sequelize.FLOAT,
+      },
+      version: {
+        type: Sequelize.STRING,
+      },
+      quantity: {
+        type: Sequelize.INTEGER,
       },
       imageAvatar: {
         type: Sequelize.JSON,
@@ -24,32 +30,20 @@ module.exports = {
       imageDetail: {
         type: Sequelize.JSON,
       },
+      colors: {
+        type: Sequelize.JSON,
+      },
+      percentDiscount: {
+        type: Sequelize.INTEGER,
+      },
       description: {
-        type: Sequelize.STRING,
-      },
-      price: {
-        type: Sequelize.FLOAT,
-      },
-      numberOfFloors: {
-        type: Sequelize.INTEGER,
-      },
-      width: {
-        type: Sequelize.FLOAT,
-      },
-      length: {
-        type: Sequelize.FLOAT,
-      },
-      roomNumber: {
-        type: Sequelize.INTEGER,
-      },
-      facade: {
-        type: Sequelize.INTEGER,
-      },
-      productCode: {
         type: Sequelize.STRING,
       },
       slug: {
         type: Sequelize.STRING,
+      },
+      categoriesId: {
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,

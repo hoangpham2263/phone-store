@@ -5,7 +5,7 @@ import groupController from "../controllers/groupController";
 import groupRoleController from "../controllers/groupRoleController";
 import roleController from "../controllers/roleController";
 import productController from "../controllers/productController";
-import categoryController from "../controllers/categoryController";
+import categoriesController from "../controllers/categoriesController";
 import heartController from "../controllers/heartController";
 import { checkUserJWT, checkUserPermission } from "../middleware/JWTAction";
 
@@ -67,10 +67,10 @@ const adminRoute = (app) => {
   router.delete("/product/delete", productController.deleteFunc);
 
   // Category
-  router.get("/category/read", categoryController.readFunc);
-  router.post("/category/create", categoryController.createFunc);
-  router.put("/category/update", categoryController.updateFunc);
-  router.delete("/category/delete", categoryController.deleteFunc);
+  router.get("/category/read", categoriesController.readFunc);
+  router.post("/category/create", categoriesController.createFunc);
+  router.put("/category/update", categoriesController.updateFunc);
+  router.delete("/category/delete", categoriesController.deleteFunc);
 
   // Heart
   router.get("/heart/read", checkUserJWT, checkUserPermission, heartController.readFunc);

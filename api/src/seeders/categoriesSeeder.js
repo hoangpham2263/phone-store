@@ -9,7 +9,7 @@ module.exports = {
      * Example:
      */
     await queryInterface.bulkInsert(
-      "Category",
+      "Categories",
       [
         {
           name: "Nhà cấp 4",
