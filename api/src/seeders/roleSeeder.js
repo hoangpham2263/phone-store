@@ -113,22 +113,22 @@ module.exports = {
           url: "/category/delete",
           description: "Category Delete",
         },
-        // Heart
+        // Cart
         {
-          url: "/heart/read",
-          description: "Heart Read",
+          url: "/cart/read",
+          description: "Cart Read",
         },
         {
-          url: "/heart/create",
-          description: "Heart Create",
+          url: "/cart/create",
+          description: "Cart Create",
         },
         {
-          url: "/heart/update",
-          description: "Heart Update",
+          url: "/cart/update",
+          description: "Cart Update",
         },
         {
-          url: "/heart/delete",
-          description: "Heart Delete",
+          url: "/cart/delete",
+          description: "Cart Delete",
         },
       ],
       {}

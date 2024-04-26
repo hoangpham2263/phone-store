@@ -1,10 +1,9 @@
 require("dotenv").config();
 import express from "express";
-import apiRoute from "./routes/api";
-const cors = require("cors");
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
-// import connection from "./config/connectDB";
+import apiAdminRoute from "./routes/apiAdmin";
+import apiUserRoute from "./routes/apiUser";
 
 const app = express();
 const PORT = process.env.PORT || 7000;
@@ -37,7 +36,8 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.use(cookieParser());
 
 // routes
-apiRoute(app);
+apiAdminRoute(app);
+apiUserRoute(app)
 
 app.listen(PORT, () => {
   console.log(">>> JWT Backend is running on the port = " + PORT);
