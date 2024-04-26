@@ -9,7 +9,7 @@ const readHeart = async (userId) => {
       where: { UserId: userId },
     });
     return {
-      EM: "Read heart success",
+      EM: "Read cart success",
       EC: 0,
       DT: data,
     };
@@ -33,13 +33,13 @@ const readProductCheckHeart = async (productId, userId) => {
     });
     if (isData) {
       return {
-        EM: "Check heart True",
+        EM: "Check cart True",
         EC: 0,
         DT: isData,
       };
     }
     return {
-      EM: "Check heart False",
+      EM: "Check cart False",
       EC: 1,
       DT: isData,
     };
@@ -67,10 +67,10 @@ const readHeartWithPagination = async (page, limit, userId) => {
     let data = {
       totalRows: count,
       totalPages: totalPages,
-      hearts: rows,
+      carts: rows,
     };
     return {
-      EM: "Read heart success",
+      EM: "Read cart success",
       EC: 0,
       DT: data,
     };
@@ -151,13 +151,13 @@ const updateRole = async (data) => {
 
 const deleteHeart = async (userId, productId) => {
   try {
-    let heart = await db.Heart.findOne({
+    let cart = await db.Heart.findOne({
       where: { [Op.and]: [{ UserId: userId }, { ProductId: productId }] },
     });
-    if (heart) {
-      await heart.destroy();
+    if (cart) {
+      await cart.destroy();
       return {
-        EM: "Delete heart success",
+        EM: "Delete cart success",
         EC: 0,
         DT: [],
       };
