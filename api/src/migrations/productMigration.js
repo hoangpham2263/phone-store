@@ -24,14 +24,14 @@ module.exports = {
       quantity: {
         type: Sequelize.INTEGER,
       },
-      imageAvatar: {
+      image: {
         type: Sequelize.JSON,
       },
-      imageDetail: {
-        type: Sequelize.JSON,
+      capacity: {
+        type: Sequelize.INTEGER,
       },
-      colors: {
-        type: Sequelize.JSON,
+      color: {
+        type: Sequelize.STRING,
       },
       percentDiscount: {
         type: Sequelize.INTEGER,
