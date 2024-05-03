@@ -1,7 +1,6 @@
-const cloudinary = require("cloudinary").v2;
 import productService from "../services/productService";
+import { UploadCloudList } from '../utility/UploadCloudList'
 
-cloudinary.config({ cloud_name: process.env.CLOUDINARY_CLOUD_NAME, api_key: process.env.CLOUDINARY_API_KEY, api_secret: process.env.CLOUDINARY_API_SECRET });
 
 // Read Product
 const readFunc = async (req, res) => {
@@ -54,15 +53,6 @@ const readFuncDetail = async (req, res) => {
 };
 
 // Create Product
-const uploadCloudinaryList = async (valueImage, folderStorage) => {
-  const uploadImageLists = [];
-  for (let i = 0; i < valueImage.length; ++i) {
-    const uploadImageItem = await cloudinary.uploader.upload(valueImage[i], { folder: folderStorage, });
-    uploadImageLists.push(uploadImageItem.secure_url);
-  }
-  return uploadImageLists;
-};
-
 const createFunc = async (req, res) => {
   try {
     const { title, price, version, quantity, image, capacity, color, percentDiscount, categoriesId } = req.body.data;
@@ -70,12 +60,13 @@ const createFunc = async (req, res) => {
       return res.status(200).json({ EM: "Missing Required Parameters", EC: 1, DT: "", });
     }
 
-    const imageCloud = await uploadCloudinaryList(image, "blueprint_image_avatar");
+    const imageCloud = await UploadCloudList(image, "blueprint_image_avatar");
     const newData = { ...req.body.data, image: imageCloud, };
     let data = await productService.createProduct(newData);
     return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
 
   } catch (error) {
+    console.log(error)
     return res.status(500).json({ EM: "Error from server", EC: -1, DT: [], });
   }
 };
@@ -87,7 +78,7 @@ const updateFunc = async (req, res) => {
     let newData = req.body.data;
 
     if (image) {
-      const imageCloud = await uploadCloudinaryList(image, "blueprint_image_avatar");
+      const imageCloud = await UploadCloudList(image, "blueprint_image_avatar");
       newData = await { ...req.body.data, image: imageCloud, };
     }
     const data = await productService.updateProduct(newData);
