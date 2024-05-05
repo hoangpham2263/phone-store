@@ -4,7 +4,7 @@ const { Op } = require("sequelize");
 const readProduct = async () => {
   try {
     let data = await db.Product.findAll({
-      attributes: ["id", "title", "price", "version", "quantity", "imageAvatar", "imageDetail", "colors", "percentDiscount", "slug", "categoriesId",],
+      attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId",],
       order: [["title", "ASC"]],
       include: [{ model: db.Categories, attributes: ["id", "name", "description"] }],
     });
@@ -25,7 +25,7 @@ const readProductWithCategories = async (page, limit, categories) => {
         where: { categoriesId: isFindCategories.id },
         offset: offset,
         limit: limit,
-        attributes: ["id", "title", "price", "version", "quantity", "imageAvatar", "imageDetail", "colors", "percentDiscount", "slug", "categoriesId",],
+        attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId",],
         order: [["title", "ASC"]],
         include: [{ model: db.Categories, attributes: ["id", "name", "description"] }],
       });
@@ -43,7 +43,7 @@ const readProductWithSearch = async (page, limit, search) => {
     let { count, rows } = await db.Product.findAndCountAll({
       offset: offset,
       limit: limit,
-      attributes: ["id", "title", "price", "version", "quantity", "imageAvatar", "imageDetail", "colors", "percentDiscount", "slug", "categoriesId",],
+      attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId",],
       order: [["title", "ASC"]],
       where: { [Op.or]: { title: { [Op.like]: `%${search}%`, }, }, },
       include: [{ model: db.Categories, attributes: ["id", "name", "description"] }],
@@ -61,7 +61,7 @@ const readProductWithPagination = async (page, limit) => {
     let { count, rows } = await db.Product.findAndCountAll({
       offset: offset,
       limit: limit,
-      attributes: ["id", "title", "price", "version", "quantity", "imageAvatar", "imageDetail", "colors", "percentDiscount", "slug", "categoriesId",],
+      attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId",],
       order: [["title", "ASC"]],
       include: [{ model: db.Categories, attributes: ["id", "name", "description"] }],
     });
@@ -76,7 +76,7 @@ const readProductWithPagination = async (page, limit) => {
 const readProductId = async (id) => {
   try {
     let data = await db.Product.findOne({
-      attributes: ["id", "title", "price", "version", "quantity", "imageAvatar", "imageDetail", "colors", "percentDiscount", "slug", "categoriesId",],
+      attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId",],
       include: [{ model: db.Categories, attributes: ["id", "name", "description"] }],
       where: { id: id },
     });
@@ -90,7 +90,7 @@ const readProductDetail = async (slug) => {
   try {
     let data = await db.Product.findOne({
       where: { slug: slug },
-      attributes: ["id", "title", "price", "version", "quantity", "imageAvatar", "imageDetail", "colors", "percentDiscount", "slug", "categoriesId",],
+      attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId",],
       order: [["title", "ASC"]],
       include: [{ model: db.Categories, attributes: ["id", "name", "description"] }],
     });
@@ -107,9 +107,9 @@ const createProduct = async (data) => {
       price: data.price,
       version: data.version,
       quantity: data.quantity,
-      imageAvatar: data.imageAvatar,
-      imageDetail: data.imageDetail,
-      colors: data.colors,
+      image: data.image,
+      capacity: data.capacity,
+      color: data.color,
       percentDiscount: data.percentDiscount,
       categoriesId: data.categoriesId,
     });
@@ -123,39 +123,39 @@ const updateProduct = async (data) => {
   try {
     let isProduct = await db.Product.findOne({ where: { id: data.id, }, attributes: ["id", "title", "categoriesId",], });
     if (isProduct) {
-      if (data.imageAvatar.length > 0 && data.imageDetail.length) {
+      if (data.image.length > 0 && data.capacity.length) {
         await isProduct.update({
           title: data.title,
           price: data.price,
           version: data.version,
           quantity: data.quantity,
-          imageAvatar: data.imageAvatar,
-          imageDetail: data.imageDetail,
-          colors: data.colors,
+          image: data.image,
+          capacity: data.capacity,
+          color: data.color,
           percentDiscount: data.percentDiscount,
           categoriesId: data.categoriesId,
         });
         return { EM: "Update product success", EC: 0, DT: [], };
-      } else if (data.imageAvatar.length > 0) {
+      } else if (data.image.length > 0) {
         await isProduct.update({
           title: data.title,
           price: data.price,
           version: data.version,
           quantity: data.quantity,
-          imageAvatar: data.imageAvatar,
-          colors: data.colors,
+          image: data.image,
+          color: data.color,
           percentDiscount: data.percentDiscount,
           categoriesId: data.categoriesId,
         });
         return { EM: "Update product success", EC: 0, DT: [], };
-      } else if (data.imageDetail.length > 0) {
+      } else if (data.capacity.length > 0) {
         await isProduct.update({
           title: data.title,
           price: data.price,
           version: data.version,
           quantity: data.quantity,
-          imageDetail: data.imageDetail,
-          colors: data.colors,
+          capacity: data.capacity,
+          color: data.color,
           percentDiscount: data.percentDiscount,
           categoriesId: data.categoriesId,
         });
@@ -166,7 +166,7 @@ const updateProduct = async (data) => {
           price: data.price,
           version: data.version,
           quantity: data.quantity,
-          colors: data.colors,
+          color: data.color,
           percentDiscount: data.percentDiscount,
           categoriesId: data.categoriesId,
         });

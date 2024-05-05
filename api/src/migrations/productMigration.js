@@ -28,7 +28,7 @@ module.exports = {
         type: Sequelize.JSON,
       },
       capacity: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       color: {
         type: Sequelize.STRING,
