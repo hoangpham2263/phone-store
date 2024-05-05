@@ -32,8 +32,8 @@ const readFunc = async (req, res) => {
 // Create Brand
 const createFunc = async (req, res) => {
   try {
-    const { name, url } = req.body.data;
-    if (!name || !url) {
+    const { name } = req.body.data;
+    if (!name) {
       return res.status(200).json({
         EM: "Missing Required Parameters",
         EC: 1,
@@ -66,8 +66,6 @@ const updateFunc = async (req, res) => {
       DT: data.DT,
     });
   } catch (error) {
-    s;
-    console.log(error);
     return res.status(500).json({
       EM: "Error from server",
       EC: -1,

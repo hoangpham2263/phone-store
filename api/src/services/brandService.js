@@ -56,7 +56,6 @@ const createBrand = async (data) => {
   try {
     await db.Brand.create({
       name: data.name,
-      url: data.url,
     });
     return {
       EM: "A brand is created successfully!",
@@ -83,7 +82,6 @@ const updateBrand = async (data) => {
     if (brand) {
       await brand.update({
         name: data.name,
-        url: data.url,
       });
       return {
         EM: "Update brand success",

@@ -56,7 +56,6 @@ const createCategories = async (data) => {
   try {
     await db.Categories.create({
       name: data.name,
-      url: data.url,
     });
     return {
       EM: "A categories is created successfully!",
@@ -83,7 +82,6 @@ const updateCategories = async (data) => {
     if (categories) {
       await categories.update({
         name: data.name,
-        url: data.url,
       });
       return {
         EM: "Update categories success",
