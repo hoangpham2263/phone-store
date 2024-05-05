@@ -124,40 +124,56 @@ module.exports = {
           groupId: 1,
           roleId: 28,
         },
+        {
+          groupId: 1,
+          roleId: 29,
+        },
+        {
+          groupId: 1,
+          roleId: 30,
+        },
+        {
+          groupId: 1,
+          roleId: 31,
+        },
+        {
+          groupId: 1,
+          roleId: 32,
+        },
         // Dev
-        {
-          groupId: 2,
-          roleId: 25,
-        },
-        {
-          groupId: 2,
-          roleId: 26,
-        },
-        {
-          groupId: 2,
-          roleId: 27,
-        },
-        {
-          groupId: 2,
-          roleId: 28,
-        },
+        // {
+        //   groupId: 2,
+        //   roleId: 25,
+        // },
+        // {
+        //   groupId: 2,
+        //   roleId: 26,
+        // },
+        // {
+        //   groupId: 2,
+        //   roleId: 27,
+        // },
+        // {
+        //   groupId: 2,
+        //   roleId: 28,
+        // },
         // Customer
-        {
-          groupId: 3,
-          roleId: 25,
-        },
-        {
-          groupId: 3,
-          roleId: 26,
-        },
-        {
-          groupId: 3,
-          roleId: 27,
-        },
-        {
-          groupId: 3,
-          roleId: 28,
-        },
+        // {
+        //   groupId: 3,
+        //   roleId: 25,
+        // },
+        // {
+        //   groupId: 3,
+        //   roleId: 26,
+        // },
+        // {
+        //   groupId: 3,
+        //   roleId: 27,
+        // },
+        // {
+        //   groupId: 3,
+        //   roleId: 28,
+        // },
       ],
       {}
     );

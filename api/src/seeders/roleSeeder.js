@@ -113,6 +113,23 @@ module.exports = {
           url: "/categories/delete",
           description: "Category Delete",
         },
+        // Brand
+        {
+          url: "/brand/read",
+          description: "Category Read",
+        },
+        {
+          url: "/brand/create",
+          description: "Category Create",
+        },
+        {
+          url: "/brand/update",
+          description: "Category Update",
+        },
+        {
+          url: "/brand/delete",
+          description: "Category Delete",
+        },
         // Cart
         {
           url: "/cart/read",
