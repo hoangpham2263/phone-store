@@ -54,10 +54,10 @@ const adminRoute = (app) => {
   router.delete("/product/delete", authMiddlewares, productController.deleteFunc);
 
   // Category
-  router.get("/category/read", authMiddlewares, categoriesController.readFunc);
-  router.post("/category/create", authMiddlewares, categoriesController.createFunc);
-  router.put("/category/update", authMiddlewares, categoriesController.updateFunc);
-  router.delete("/category/delete", authMiddlewares, categoriesController.deleteFunc);
+  router.get("/categories/read", authMiddlewares, categoriesController.readFunc);
+  router.post("/categories/create", authMiddlewares, categoriesController.createFunc);
+  router.put("/categories/update", authMiddlewares, categoriesController.updateFunc);
+  router.delete("/categories/delete", authMiddlewares, categoriesController.deleteFunc);
 
   // Cart
   router.get("/cart/read", authMiddlewares, cartController.readFunc);

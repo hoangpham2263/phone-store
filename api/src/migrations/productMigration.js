@@ -45,6 +45,9 @@ module.exports = {
       categoriesId: {
         type: Sequelize.INTEGER,
       },
+      brandId: {
+        type: Sequelize.INTEGER,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

@@ -24,7 +24,7 @@ const adminRoute = (app) => {
   router.get("/role/read", roleController.readFunc);
   router.get("/product/read", productController.readFunc);
   router.get("/product/read/:slug", productController.readFuncDetail);
-  router.get("/category/read", categoriesController.readFunc);
+  router.get("/categories/read", categoriesController.readFunc);
 
   return app.use("/api/v1", router);
 };

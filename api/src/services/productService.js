@@ -4,9 +4,9 @@ const { Op } = require("sequelize");
 const readProduct = async () => {
   try {
     let data = await db.Product.findAll({
-      attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId",],
+      attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId", "brandId"],
       order: [["title", "ASC"]],
-      include: [{ model: db.Categories, attributes: ["id", "name", "description"] }],
+      include: [{ model: db.Categories, attributes: ["id", "name"] }, { model: db.Brand, attributes: ["id", "name"] }],
     });
     return { EM: "Read product success", EC: 0, DT: data, };
   } catch (error) {
@@ -16,8 +16,8 @@ const readProduct = async () => {
 const readProductWithCategories = async (page, limit, categories) => {
   try {
     const isFindCategories = await db.Categories.findOne({
-      attributes: ["id", "name", "description"],
-      where: { description: categories },
+      attributes: ["id", "name"],
+      where: { url: categories },
     });
     if (isFindCategories) {
       let offset = (page - 1) * limit;
@@ -25,9 +25,9 @@ const readProductWithCategories = async (page, limit, categories) => {
         where: { categoriesId: isFindCategories.id },
         offset: offset,
         limit: limit,
-        attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId",],
+        attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId", "brandId"],
         order: [["title", "ASC"]],
-        include: [{ model: db.Categories, attributes: ["id", "name", "description"] }],
+        include: [{ model: db.Categories, attributes: ["id", "name"] }, { model: db.Brand, attributes: ["id", "name"] }],
       });
       const totalPages = Math.ceil(count / limit);
       let data = { totalRows: count, totalPages: totalPages, products: rows, };
@@ -43,10 +43,10 @@ const readProductWithSearch = async (page, limit, search) => {
     let { count, rows } = await db.Product.findAndCountAll({
       offset: offset,
       limit: limit,
-      attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId",],
+      attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId", "brandId"],
       order: [["title", "ASC"]],
       where: { [Op.or]: { title: { [Op.like]: `%${search}%`, }, }, },
-      include: [{ model: db.Categories, attributes: ["id", "name", "description"] }],
+      include: [{ model: db.Categories, attributes: ["id", "name"] }, { model: db.Brand, attributes: ["id", "name"] }],
     });
     const totalPages = Math.ceil(count / limit);
     let data = { totalRows: count, totalPages: totalPages, products: rows, };
@@ -61,9 +61,9 @@ const readProductWithPagination = async (page, limit) => {
     let { count, rows } = await db.Product.findAndCountAll({
       offset: offset,
       limit: limit,
-      attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId",],
+      attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId", "brandId"],
       order: [["title", "ASC"]],
-      include: [{ model: db.Categories, attributes: ["id", "name", "description"] }],
+      include: [{ model: db.Categories, attributes: ["id", "name"] }, { model: db.Brand, attributes: ["id", "name"] }],
     });
     const totalPages = Math.ceil(count / limit);
     let data = { totalRows: count, totalPages: totalPages, products: rows, };
@@ -76,8 +76,8 @@ const readProductWithPagination = async (page, limit) => {
 const readProductId = async (id) => {
   try {
     let data = await db.Product.findOne({
-      attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId",],
-      include: [{ model: db.Categories, attributes: ["id", "name", "description"] }],
+      attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId", "brandId"],
+      include: [{ model: db.Categories, attributes: ["id", "name"] }, { model: db.Brand, attributes: ["id", "name"] }],
       where: { id: id },
     });
     return { EM: "Read product success", EC: 0, DT: data, };
@@ -90,9 +90,9 @@ const readProductDetail = async (slug) => {
   try {
     let data = await db.Product.findOne({
       where: { slug: slug },
-      attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId",],
+      attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId", "brandId"],
       order: [["title", "ASC"]],
-      include: [{ model: db.Categories, attributes: ["id", "name", "description"] }],
+      include: [{ model: db.Categories, attributes: ["id", "name"] }, { model: db.Brand, attributes: ["id", "name"] }],
     });
     return { EM: "Read product success", EC: 0, DT: data, };
   } catch (error) {
@@ -121,7 +121,7 @@ const createProduct = async (data) => {
 
 const updateProduct = async (data) => {
   try {
-    let isProduct = await db.Product.findOne({ where: { id: data.id, }, attributes: ["id", "title", "categoriesId",], });
+    let isProduct = await db.Product.findOne({ where: { id: data.id, }, attributes: ["id", "title", "categoriesId", "brandId"], });
     if (isProduct) {
       if (data.image.length > 0 && data.capacity.length) {
         await isProduct.update({
@@ -182,7 +182,7 @@ const updateProduct = async (data) => {
 
 const deleteProduct = async (id) => {
   try {
-    let isProduct = await db.Product.findOne({ where: { id: id, }, attributes: ["id", "title", "categoriesId",], });
+    let isProduct = await db.Product.findOne({ where: { id: id, }, attributes: ["id", "title", "categoriesId", "brandId"], });
     if (isProduct) {
       await isProduct.destroy();
       return { EM: "Delete product success", EC: 0, DT: [], };

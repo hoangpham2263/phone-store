@@ -96,21 +96,21 @@ module.exports = {
           url: "/product/delete",
           description: "Product Delete",
         },
-        // Category
+        // Categories
         {
-          url: "/category/read",
+          url: "/categories/read",
           description: "Category Read",
         },
         {
-          url: "/category/create",
+          url: "/categories/create",
           description: "Category Create",
         },
         {
-          url: "/category/update",
+          url: "/categories/update",
           description: "Category Update",
         },
         {
-          url: "/category/delete",
+          url: "/categories/delete",
           description: "Category Delete",
         },
         // Cart

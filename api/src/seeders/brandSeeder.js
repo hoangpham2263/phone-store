@@ -9,17 +9,27 @@ module.exports = {
      * Example:
      */
     await queryInterface.bulkInsert(
-      "Categories",
+      "Brand",
       [
+        // Mobile
         {
-          name: "Mobile",
+          name: "Iphone",
         },
         {
-          name: "Tablet",
+          name: "Samsung",
         },
         {
-          name: "Laptop",
-        }
+          name: "Ipad",
+        },
+        {
+          name: "MacBook",
+        },
+        {
+          name: "Lenovo",
+        },
+        {
+          name: "Dell",
+        },
       ],
       {}
     );

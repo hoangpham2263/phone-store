@@ -23,6 +23,7 @@ module.exports = {
           percentDiscount: 10,
           slug: "iphone-7",
           categoriesId: 1,
+          brandId: 1,
         },
         {
           title: "Iphone 7",
@@ -36,6 +37,7 @@ module.exports = {
           percentDiscount: 10,
           slug: "iphone-7",
           categoriesId: 1,
+          brandId: 1,
         },
         {
           title: "Iphone 7",
@@ -49,6 +51,7 @@ module.exports = {
           percentDiscount: 10,
           slug: "iphone-7",
           categoriesId: 1,
+          brandId: 1,
         },
         {
           title: "Iphone 7",
@@ -62,6 +65,7 @@ module.exports = {
           percentDiscount: 10,
           slug: "iphone-7",
           categoriesId: 1,
+          brandId: 1,
         },
       ],
       {}

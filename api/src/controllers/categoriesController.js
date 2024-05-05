@@ -32,8 +32,8 @@ const readFunc = async (req, res) => {
 // Create Categories
 const createFunc = async (req, res) => {
   try {
-    const { name, description } = req.body.data;
-    if (!name || !description) {
+    const { name, url } = req.body.data;
+    if (!name || !url) {
       return res.status(200).json({
         EM: "Missing Required Parameters",
         EC: 1,

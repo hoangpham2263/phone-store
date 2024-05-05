@@ -4,7 +4,7 @@ import db from "../models/index";
 const readCategories = async () => {
   try {
     let data = await db.Categories.findAll({
-      attributes: ["id", "name", "description"],
+      attributes: ["id", "name"],
       order: [["name", "ASC"]],
     });
     return {
@@ -27,7 +27,7 @@ const readCategoriesWithPagination = async (page, limit) => {
     let { count, rows } = await db.Categories.findAndCountAll({
       offset: offset,
       limit: limit,
-      attributes: ["id", "name", "description"],
+      attributes: ["id", "name"],
       order: [["name", "ASC"]],
     });
     const totalPages = Math.ceil(count / limit);
@@ -56,7 +56,7 @@ const createCategories = async (data) => {
   try {
     await db.Categories.create({
       name: data.name,
-      description: data.description,
+      url: data.url,
     });
     return {
       EM: "A categories is created successfully!",
@@ -83,7 +83,7 @@ const updateCategories = async (data) => {
     if (categories) {
       await categories.update({
         name: data.name,
-        description: data.description,
+        url: data.url,
       });
       return {
         EM: "Update categories success",
