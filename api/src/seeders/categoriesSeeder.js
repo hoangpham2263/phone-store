@@ -12,21 +12,17 @@ module.exports = {
       "Categories",
       [
         {
-          name: "Nhà cấp 4",
-          description: "nha-cap-4-dep",
+          name: "Điện thoại",
+          description: "dien-thoai",
         },
         {
-          name: "Nhà phố",
-          description: "nha-pho-dep",
+          name: "Tablet",
+          description: "tablet",
         },
         {
-          name: "Biệt thự",
-          description: "mau-biet-thu-dep",
-        },
-        {
-          name: "Khách sạn",
-          description: "mau-khach-san-dep",
-        },
+          name: "Laptop",
+          description: "laptop",
+        }
       ],
       {}
     );

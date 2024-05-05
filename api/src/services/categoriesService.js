@@ -34,7 +34,7 @@ const readCategoriesWithPagination = async (page, limit) => {
     let data = {
       totalRows: count,
       totalPages: totalPages,
-      categoriess: rows,
+      categories: rows,
     };
     return {
       EM: "Read categories success",
