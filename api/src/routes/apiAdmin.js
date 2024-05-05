@@ -6,6 +6,7 @@ import groupRoleController from "../controllers/groupRoleController";
 import roleController from "../controllers/roleController";
 import productController from "../controllers/productController";
 import categoriesController from "../controllers/categoriesController";
+import brandController from "../controllers/brandController";
 import cartController from "../controllers/cartController";
 import { checkUserJWT, checkUserPermission } from "../middleware/JWTAction";
 
@@ -64,6 +65,12 @@ const adminRoute = (app) => {
   router.post("/cart/create", authMiddlewares, cartController.createFunc);
   router.put("/cart/update", authMiddlewares, cartController.updateFunc);
   router.delete("/cart/delete", authMiddlewares, cartController.deleteFunc);
+
+  // Category
+  router.get("/brand/read", authMiddlewares, brandController.readFunc);
+  router.post("/brand/create", authMiddlewares, brandController.createFunc);
+  router.put("/brand/update", authMiddlewares, brandController.updateFunc);
+  router.delete("/brand/delete", authMiddlewares, brandController.deleteFunc);
 
   return app.use("/api/v1/admin", router);
 };

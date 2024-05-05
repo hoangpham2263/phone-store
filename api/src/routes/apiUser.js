@@ -6,6 +6,7 @@ import groupRoleController from "../controllers/groupRoleController";
 import roleController from "../controllers/roleController";
 import productController from "../controllers/productController";
 import categoriesController from "../controllers/categoriesController";
+import brandController from "../controllers/brandController";
 
 const router = express.Router();
 
@@ -25,6 +26,7 @@ const adminRoute = (app) => {
   router.get("/product/read", productController.readFunc);
   router.get("/product/read/:slug", productController.readFuncDetail);
   router.get("/categories/read", categoriesController.readFunc);
+  router.get("/brand/read", brandController.readFunc);
 
   return app.use("/api/v1", router);
 };
