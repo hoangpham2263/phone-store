@@ -72,7 +72,6 @@ const readProductWithPagination = async (page, limit) => {
     return { EM: "Something wrongs with service", EC: 1, DT: [], };
   }
 };
-
 const readProductId = async (id) => {
   try {
     let data = await db.Product.findOne({
@@ -85,7 +84,6 @@ const readProductId = async (id) => {
     return { EM: "Something wrongs with service", EC: 1, DT: [], };
   }
 };
-
 const readProductDetail = async (slug) => {
   try {
     let data = await db.Product.findOne({
@@ -115,6 +113,7 @@ const createProduct = async (data) => {
     });
     return { EM: "A product is created successfully!", EC: 0, DT: [], };
   } catch (error) {
+    console.log(error)
     return { EM: "Something wrongs with services", EC: 1, DT: [], };
   }
 };

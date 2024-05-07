@@ -56,12 +56,16 @@ const readFuncDetail = async (req, res) => {
 const createFunc = async (req, res) => {
   try {
     const { title, price, version, quantity, image, capacity, color, percentDiscount, categoriesId } = req.body.data;
+    const dataImage = {}
     if (!title || !price || !version || !quantity || !image || !capacity || !color || !percentDiscount || !categoriesId) {
       return res.status(200).json({ EM: "Missing Required Parameters", EC: 1, DT: "", });
     }
-
-    const imageCloud = await UploadCloudList(image, "blueprint_image_avatar");
-    const newData = { ...req.body.data, image: imageCloud, };
+    for (const key in image) {
+      let imageCloud = await UploadCloudList(image[key], "ecommerce");
+      dataImage[key] = imageCloud
+    }
+    const newData = { ...req.body.data, image: dataImage, };
+    console.log(newData)
     let data = await productService.createProduct(newData);
     return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
 
