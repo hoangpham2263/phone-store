@@ -5,7 +5,7 @@ const readProduct = async () => {
   try {
     let data = await db.Product.findAll({
       attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId", "brandId"],
-      order: [["title", "ASC"]],
+      order: [["title", "DESC"]],
       include: [{ model: db.Categories, attributes: ["id", "name"] }, { model: db.Brand, attributes: ["id", "name"] }],
     });
     return { EM: "Read product success", EC: 0, DT: data, };
@@ -13,20 +13,30 @@ const readProduct = async () => {
     return { EM: "Something wrongs with service", EC: 1, DT: [], };
   }
 };
-const readProductWithCategories = async (page, limit, categories) => {
+const readProductWithCategoriesBrand = async (page, limit, categories, brand) => {
   try {
-    const isFindCategories = await db.Categories.findOne({
-      attributes: ["id", "name"],
-      where: { url: categories },
-    });
-    if (isFindCategories) {
+    let isFindCategories = undefined
+    if (categories) {
+      isFindCategories = await db.Categories.findOne({
+        attributes: ["id", "name"],
+        where: { name: categories },
+      });
+    }
+    let isFindBrand = undefined
+    if (brand) {
+      isFindBrand = await db.Brand.findOne({
+        attributes: ["id", "name"],
+        where: { name: brand },
+      });
+    }
+    if (isFindCategories || isFindBrand) {
       let offset = (page - 1) * limit;
       let { count, rows } = await db.Product.findAndCountAll({
-        where: { categoriesId: isFindCategories.id },
+        where: { [Op.or]: [isFindCategories && { categoriesId: isFindCategories?.id }, isFindBrand && { brandId: isFindBrand?.id }] },
         offset: offset,
         limit: limit,
         attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId", "brandId"],
-        order: [["title", "ASC"]],
+        order: [["title", "DESC"]],
         include: [{ model: db.Categories, attributes: ["id", "name"] }, { model: db.Brand, attributes: ["id", "name"] }],
       });
       const totalPages = Math.ceil(count / limit);
@@ -44,7 +54,7 @@ const readProductWithSearch = async (page, limit, search) => {
       offset: offset,
       limit: limit,
       attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId", "brandId"],
-      order: [["title", "ASC"]],
+      order: [["title", "DESC"]],
       where: { [Op.or]: { title: { [Op.like]: `%${search}%`, }, }, },
       include: [{ model: db.Categories, attributes: ["id", "name"] }, { model: db.Brand, attributes: ["id", "name"] }],
     });
@@ -62,7 +72,7 @@ const readProductWithPagination = async (page, limit) => {
       offset: offset,
       limit: limit,
       attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId", "brandId"],
-      order: [["title", "ASC"]],
+      order: [["title", "DESC"]],
       include: [{ model: db.Categories, attributes: ["id", "name"] }, { model: db.Brand, attributes: ["id", "name"] }],
     });
     const totalPages = Math.ceil(count / limit);
@@ -84,16 +94,43 @@ const readProductId = async (id) => {
     return { EM: "Something wrongs with service", EC: 1, DT: [], };
   }
 };
+
 const readProductDetail = async (slug) => {
   try {
     let data = await db.Product.findOne({
       where: { slug: slug },
       attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId", "brandId"],
-      order: [["title", "ASC"]],
+      order: [["title", "DESC"]],
       include: [{ model: db.Categories, attributes: ["id", "name"] }, { model: db.Brand, attributes: ["id", "name"] }],
     });
     return { EM: "Read product success", EC: 0, DT: data, };
   } catch (error) {
+    return { EM: "Something wrongs with service", EC: 1, DT: [], };
+  }
+};
+
+const readProductCapacity = async (slug, color) => {
+  try {
+    const slugCut = slug.replace(/(\d+gb)/i, '%gb');
+    console.log(color)
+    let data = await db.Product.findAll({
+      where: {
+        [Op.and]: [
+          {
+            slug: { [Op.like]: `%${slugCut}%`, }
+          },
+          {
+            color: { [Op.contains]: color }
+          }
+        ]
+      },
+      attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId", "brandId"],
+      order: [["title", "DESC"]],
+      include: [{ model: db.Categories, attributes: ["id", "name"] }, { model: db.Brand, attributes: ["id", "name"] }],
+    });
+    return { EM: "Read product success", EC: 0, DT: data, };
+  } catch (error) {
+    console.log(error)
     return { EM: "Something wrongs with service", EC: 1, DT: [], };
   }
 };
@@ -110,10 +147,10 @@ const createProduct = async (data) => {
       color: data.color,
       percentDiscount: data.percentDiscount,
       categoriesId: data.categoriesId,
+      brandId: data.brandId
     });
     return { EM: "A product is created successfully!", EC: 0, DT: [], };
   } catch (error) {
-    console.log(error)
     return { EM: "Something wrongs with services", EC: 1, DT: [], };
   }
 };
@@ -122,55 +159,19 @@ const updateProduct = async (data) => {
   try {
     let isProduct = await db.Product.findOne({ where: { id: data.id, }, attributes: ["id", "title", "categoriesId", "brandId"], });
     if (isProduct) {
-      if (data.image.length > 0 && data.capacity.length) {
-        await isProduct.update({
-          title: data.title,
-          price: data.price,
-          version: data.version,
-          quantity: data.quantity,
-          image: data.image,
-          capacity: data.capacity,
-          color: data.color,
-          percentDiscount: data.percentDiscount,
-          categoriesId: data.categoriesId,
-        });
-        return { EM: "Update product success", EC: 0, DT: [], };
-      } else if (data.image.length > 0) {
-        await isProduct.update({
-          title: data.title,
-          price: data.price,
-          version: data.version,
-          quantity: data.quantity,
-          image: data.image,
-          color: data.color,
-          percentDiscount: data.percentDiscount,
-          categoriesId: data.categoriesId,
-        });
-        return { EM: "Update product success", EC: 0, DT: [], };
-      } else if (data.capacity.length > 0) {
-        await isProduct.update({
-          title: data.title,
-          price: data.price,
-          version: data.version,
-          quantity: data.quantity,
-          capacity: data.capacity,
-          color: data.color,
-          percentDiscount: data.percentDiscount,
-          categoriesId: data.categoriesId,
-        });
-        return { EM: "Update product success", EC: 0, DT: [], };
-      } else {
-        await isProduct.update({
-          title: data.title,
-          price: data.price,
-          version: data.version,
-          quantity: data.quantity,
-          color: data.color,
-          percentDiscount: data.percentDiscount,
-          categoriesId: data.categoriesId,
-        });
-        return { EM: "Update product success", EC: 0, DT: [], };
-      }
+      await isProduct.update({
+        title: data.title,
+        price: data.price,
+        categoriesId: data.categoriesId,
+        brandId: data.brandId,
+        version: data.version,
+        quantity: data.quantity,
+        percentDiscount: data.percentDiscount,
+        capacity: data.capacity,
+        color: data.color,
+        // image: data.image
+      });
+      return { EM: "Update product success", EC: 0, DT: [], };
     } else {
       return { EM: "Product not exist", EC: 2, DT: [], };
     }
@@ -193,14 +194,4 @@ const deleteProduct = async (id) => {
   }
 };
 
-module.exports = {
-  readProduct,
-  readProductWithCategories,
-  readProductWithSearch,
-  readProductWithPagination,
-  readProductDetail,
-  readProductId,
-  createProduct,
-  updateProduct,
-  deleteProduct,
-};
+module.exports = { readProduct, readProductWithCategoriesBrand, readProductWithSearch, readProductWithPagination, readProductDetail, readProductCapacity, readProductId, createProduct, updateProduct, deleteProduct };

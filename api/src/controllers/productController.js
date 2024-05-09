@@ -5,9 +5,9 @@ import { UploadCloudList } from '../utility/UploadCloudList'
 // Read Product
 const readFunc = async (req, res) => {
   try {
-    if (req.query.page && req.query.limit && req.query.categories) {
-      let { page, limit, categories } = req.query;
-      let data = await productService.readProductWithCategories(+page, +limit, categories);
+    if (req.query.page && req.query.limit && (req.query.categories || req.query.brand)) {
+      let { page, limit, categories, brand } = req.query;
+      let data = await productService.readProductWithCategoriesBrand(+page, +limit, categories, brand);
       return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
 
     } else if (req.query.page && req.query.limit && req.query.search) {
@@ -39,8 +39,25 @@ const readFunc = async (req, res) => {
 const readFuncDetail = async (req, res) => {
   try {
     if (req.params.slug) {
-      let { slug } = req.params;
-      let data = await productService.readProductDetail(slug);
+      let { slug, color } = req.params;
+      let data = await productService.readProductDetail(slug, color);
+      return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
+
+    } else {
+      return res.status(200).json({ EM: "Read product success", EC: 0, DT: [], });
+    }
+
+  } catch (error) {
+    return res.status(500).json({ EM: "Error from server", EC: -1, DT: [], });
+  }
+};
+
+// Read Product Capacity
+const readFuncCapacity = async (req, res) => {
+  try {
+    if (req.query.slug) {
+      let { slug, color } = req.query;
+      let data = await productService.readProductCapacity(slug, color);
       return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
 
     } else {
@@ -55,22 +72,24 @@ const readFuncDetail = async (req, res) => {
 // Create Product
 const createFunc = async (req, res) => {
   try {
-    const { title, price, version, quantity, image, capacity, color, percentDiscount, categoriesId } = req.body.data;
+    const { title, price, version, quantity, image, capacity, color, percentDiscount, categoriesId, brandId } = req.body.data;
     const dataImage = {}
-    if (!title || !price || !version || !quantity || !image || !capacity || !color || !percentDiscount || !categoriesId) {
+    if (!title || !price || !version || !quantity || !image || !capacity || !color || !percentDiscount || !categoriesId || !brandId) {
       return res.status(200).json({ EM: "Missing Required Parameters", EC: 1, DT: "", });
     }
-    for (const key in image) {
-      let imageCloud = await UploadCloudList(image[key], "ecommerce");
+
+    const uploadPromises = Object.keys(image).map(async key => {
+      const imageCloud = await UploadCloudList(image[key], "ecommerce")
       dataImage[key] = imageCloud
-    }
+    })
+
+    await Promise.all(uploadPromises)
+
     const newData = { ...req.body.data, image: dataImage, };
-    console.log(newData)
     let data = await productService.createProduct(newData);
     return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
 
   } catch (error) {
-    console.log(error)
     return res.status(500).json({ EM: "Error from server", EC: -1, DT: [], });
   }
 };
@@ -78,13 +97,13 @@ const createFunc = async (req, res) => {
 // Update Product
 const updateFunc = async (req, res) => {
   try {
-    const { image } = req.body.data
+    // const { image } = req.body.data
     let newData = req.body.data;
 
-    if (image) {
-      const imageCloud = await UploadCloudList(image, "blueprint_image_avatar");
-      newData = await { ...req.body.data, image: imageCloud, };
-    }
+    // if (image) {
+    // const imageCloud = await UploadCloudList(image, "blueprint_image_avatar");
+    // newData = await { ...req.body.data, image: imageCloud, };
+    // }
     const data = await productService.updateProduct(newData);
     return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
 
@@ -105,4 +124,4 @@ const deleteFunc = async (req, res) => {
   }
 };
 
-module.exports = { readFunc, readFuncDetail, createFunc, updateFunc, deleteFunc };
+module.exports = { readFunc, readFuncDetail, readFuncCapacity, createFunc, updateFunc, deleteFunc };
