@@ -13,8 +13,9 @@ const readProduct = async () => {
     return { EM: "Something wrongs with service", EC: 1, DT: [], };
   }
 };
-const readProductWithCategoriesBrand = async (page, limit, categories, brand) => {
+const readProductWithCategoriesBrand = async (page, limit, categories, brand, version, sort) => {
   try {
+
     let isFindCategories = undefined
     if (categories) {
       isFindCategories = await db.Categories.findOne({
@@ -29,14 +30,28 @@ const readProductWithCategoriesBrand = async (page, limit, categories, brand) =>
         where: { name: brand },
       });
     }
+
+    let orderName, orderValue
+    if (sort === "title") {
+      orderName = "title"; orderValue = "ASC"
+    } else if (sort === "-title") {
+      orderName = "title"; orderValue = "DESC";
+    } else if (sort === "price") {
+      orderName = "price"; orderValue = "ASC";
+    } else if (sort === "-price") {
+      orderName = "price"; orderValue = "DESC";
+    } else {
+      orderName = "title"; orderValue = "DESC"
+    }
+
     if (isFindCategories || isFindBrand) {
       let offset = (page - 1) * limit;
       let { count, rows } = await db.Product.findAndCountAll({
-        where: { [Op.or]: [isFindCategories && { categoriesId: isFindCategories?.id }, isFindBrand && { brandId: isFindBrand?.id }] },
+        where: { [Op.and]: [isFindCategories && { categoriesId: isFindCategories?.id }, isFindBrand && { brandId: isFindBrand?.id }, version && { version: version }] },
         offset: offset,
         limit: limit,
         attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId", "brandId"],
-        order: [["title", "DESC"]],
+        order: [[orderName, orderValue]],
         include: [{ model: db.Categories, attributes: ["id", "name"] }, { model: db.Brand, attributes: ["id", "name"] }],
       });
       const totalPages = Math.ceil(count / limit);
@@ -94,7 +109,6 @@ const readProductId = async (id) => {
     return { EM: "Something wrongs with service", EC: 1, DT: [], };
   }
 };
-
 const readProductDetail = async (slug) => {
   try {
     let data = await db.Product.findOne({
@@ -108,33 +122,32 @@ const readProductDetail = async (slug) => {
     return { EM: "Something wrongs with service", EC: 1, DT: [], };
   }
 };
-
-const readProductCapacity = async (slug, color) => {
+const readProductSort = async (page, limit, sort) => {
+  console.log(page)
+  console.log(limit)
+  console.log(sort)
   try {
-    const slugCut = slug.replace(/(\d+gb)/i, '%gb');
-    console.log(color)
-    let data = await db.Product.findAll({
-      where: {
-        [Op.and]: [
-          {
-            slug: { [Op.like]: `%${slugCut}%`, }
-          },
-          {
-            color: { [Op.contains]: color }
-          }
-        ]
-      },
-      attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId", "brandId"],
-      order: [["title", "DESC"]],
-      include: [{ model: db.Categories, attributes: ["id", "name"] }, { model: db.Brand, attributes: ["id", "name"] }],
-    });
-    return { EM: "Read product success", EC: 0, DT: data, };
+    // let data = await db.Product.findAll({
+    //   where: {
+    //     [Op.and]: [
+    //       {
+    //         slug: { [Op.like]: `%${slugCut}%`, }
+    //       },
+    //       {
+    //         color: { [Op.contains]: color }
+    //       }
+    //     ]
+    //   },
+    //   attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId", "brandId"],
+    //   order: [["title", "DESC"]],
+    //   include: [{ model: db.Categories, attributes: ["id", "name"] }, { model: db.Brand, attributes: ["id", "name"] }],
+    // });
+    // return { EM: "Read product success", EC: 0, DT: data, };
   } catch (error) {
     console.log(error)
     return { EM: "Something wrongs with service", EC: 1, DT: [], };
   }
 };
-
 const createProduct = async (data) => {
   try {
     await db.Product.create({
@@ -154,7 +167,6 @@ const createProduct = async (data) => {
     return { EM: "Something wrongs with services", EC: 1, DT: [], };
   }
 };
-
 const updateProduct = async (data) => {
   try {
     let isProduct = await db.Product.findOne({ where: { id: data.id, }, attributes: ["id", "title", "categoriesId", "brandId"], });
@@ -179,7 +191,6 @@ const updateProduct = async (data) => {
     return { EM: "Something wrongs with services", EC: 1, DT: [], };
   }
 };
-
 const deleteProduct = async (id) => {
   try {
     let isProduct = await db.Product.findOne({ where: { id: id, }, attributes: ["id", "title", "categoriesId", "brandId"], });
@@ -194,4 +205,4 @@ const deleteProduct = async (id) => {
   }
 };
 
-module.exports = { readProduct, readProductWithCategoriesBrand, readProductWithSearch, readProductWithPagination, readProductDetail, readProductCapacity, readProductId, createProduct, updateProduct, deleteProduct };
+module.exports = { readProduct, readProductSort, readProductWithCategoriesBrand, readProductWithSearch, readProductWithPagination, readProductDetail, readProductId, createProduct, updateProduct, deleteProduct };

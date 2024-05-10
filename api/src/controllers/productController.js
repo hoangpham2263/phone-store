@@ -5,9 +5,9 @@ import { UploadCloudList } from '../utility/UploadCloudList'
 // Read Product
 const readFunc = async (req, res) => {
   try {
-    if (req.query.page && req.query.limit && (req.query.categories || req.query.brand)) {
-      let { page, limit, categories, brand } = req.query;
-      let data = await productService.readProductWithCategoriesBrand(+page, +limit, categories, brand);
+    if (req.query.page && req.query.limit && (req.query.categories || req.query.brand || req.query.version || req.query.sort)) {
+      let { page, limit, categories, brand, version, sort } = req.query;
+      let data = await productService.readProductWithCategoriesBrand(+page, +limit, categories, brand, version, sort);
       return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
 
     } else if (req.query.page && req.query.limit && req.query.search) {
@@ -52,16 +52,17 @@ const readFuncDetail = async (req, res) => {
   }
 };
 
-// Read Product Capacity
-const readFuncCapacity = async (req, res) => {
+// Read Product Sort
+const readFuncSort = async (req, res) => {
   try {
-    if (req.query.slug) {
-      let { slug, color } = req.query;
-      let data = await productService.readProductCapacity(slug, color);
+    if (req.query.page && req.query.limit && req.query.sort) {
+      let { page, limit, sort } = req.query;
+      let data = await productService.readProductSort(+page, +limit, sort);
       return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
 
     } else {
-      return res.status(200).json({ EM: "Read product success", EC: 0, DT: [], });
+      let data = await productService.readProduct();
+      return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
     }
 
   } catch (error) {
@@ -124,4 +125,4 @@ const deleteFunc = async (req, res) => {
   }
 };
 
-module.exports = { readFunc, readFuncDetail, readFuncCapacity, createFunc, updateFunc, deleteFunc };
+module.exports = { readFunc, readFuncSort, readFuncDetail, createFunc, updateFunc, deleteFunc };
