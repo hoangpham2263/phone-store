@@ -103,13 +103,18 @@ const handleLoginUser = async (data) => {
     if (user) {
       let isCorrectPassword = await checkPassword(data.password, user.password);
       if (isCorrectPassword) {
-        let { lastName, firstName, address, sex } = user.dataValues;
+        let { id, lastName, firstName, address, sex } = user.dataValues;
         let dataUsers = { lastName, firstName, address, sex };
         let groupWithRoles = await getGroupWithRoles(user);
         let payload = {
-          email: user.email,
+          user: {
+            id: id,
+            firstName: firstName,
+            lastName: lastName,
+            address: address,
+            email: user.email,
+          },
           groupWithRoles,
-          expiresIn: process.env.JWT_EXPIRES_IN, // 60 milliseconds
         };
         let token = await createJWT(payload);
         await user.update({

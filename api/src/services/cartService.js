@@ -1,187 +1,112 @@
 import db from "../models/index";
 const { Op } = require("sequelize");
 
-const readHeart = async (userId) => {
+const readCart = async (idUser) => {
   try {
-    let data = await db.Heart.findAll({
-      attributes: ["id", "UserId", "ProductId"],
-      order: [["UserId", "ASC"]],
-      where: { UserId: userId },
+    let data = await db.Cart.findAll({
+      attributes: ["id", "userId", "productId"],
+      order: [["userId", "ASC"]],
+      where: { userId: idUser },
     });
-    return {
-      EM: "Read cart success",
-      EC: 0,
-      DT: data,
-    };
+    return { EM: "Read cart success", EC: 0, DT: data, };
   } catch (error) {
     console.log(error);
-    return {
-      EM: "Something wrongs with service",
-      EC: 1,
-      DT: [],
-    };
-  }
-};
-const readProductCheckHeart = async (productId, userId) => {
-  try {
-    let isData = await db.Heart.findOne({
-      attributes: ["id", "UserId", "ProductId"],
-      order: [["UserId", "ASC"]],
-      where: {
-        [Op.and]: [{ ProductId: productId }, { UserId: userId }],
-      },
-    });
-    if (isData) {
-      return {
-        EM: "Check cart True",
-        EC: 0,
-        DT: isData,
-      };
-    }
-    return {
-      EM: "Check cart False",
-      EC: 1,
-      DT: isData,
-    };
-  } catch (error) {
-    console.log(error);
-    return {
-      EM: "Something wrongs with service",
-      EC: 1,
-      DT: [],
-    };
+    return { EM: "Something wrongs with service", EC: 1, DT: [], };
   }
 };
 
-const readHeartWithPagination = async (page, limit, userId) => {
+const readCartTotal = async (idUser) => {
+  try {
+    let countProduct = 0
+    let data = await db.Cart.findAll({
+      attributes: ["id", "userId", "productId"],
+      order: [["userId", "ASC"]],
+      where: { userId: idUser },
+    });
+    if (data.length > 0) { countProduct = data.length }
+    return { EM: "Read cart success", EC: 0, DT: countProduct, };
+  } catch (error) {
+    console.log(error);
+    return { EM: "Something wrongs with service", EC: 1, DT: [], };
+  }
+};
+
+const readCartWithIdUser = async (page, limit, idUser) => {
   try {
     let offset = (page - 1) * limit;
-    let { count, rows } = await db.Heart.findAndCountAll({
+    let { count, rows } = await db.Cart.findAndCountAll({
       offset: offset,
       limit: limit,
-      attributes: ["id", "UserId", "ProductId"],
-      order: [["UserId", "ASC"]],
-      where: { UserId: userId },
+      attributes: ["id", "userId", "productId"],
+      order: [["userId", "ASC"]],
+      where: { userId: idUser },
+      include: [{ model: db.User, attributes: ["id", "lastName", "firstName", "phone", "email", "address", "sex"] }, { model: db.Product, attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId", "brandId"] }],
     });
     const totalPages = Math.ceil(count / limit);
-    let data = {
-      totalRows: count,
-      totalPages: totalPages,
-      carts: rows,
-    };
-    return {
-      EM: "Read cart success",
-      EC: 0,
-      DT: data,
-    };
+    let data = { totalRows: count, totalPages: totalPages, carts: rows, };
+    return { EM: "Read cart success", EC: 0, DT: data, };
   } catch (error) {
     console.log(error);
-    return {
-      EM: "Something wrongs with service",
-      EC: 1,
-      DT: [],
-    };
+    return { EM: "Something wrongs with service", EC: 1, DT: [], };
   }
 };
 
-const createHeart = async (userId, productId) => {
+const createCart = async (idUser, idProduct) => {
   try {
-    let isUser = await db.Heart.findOne({
-      where: { [Op.and]: [{ UserId: userId }, { ProductId: productId }] },
+    let isUser = await db.Cart.findOne({
+      where: { [Op.and]: [{ userId: idUser }, { productId: idProduct }] },
     });
     if (isUser) {
-      return {
-        EM: "Product is already in favourite!",
-        EC: 1,
-        DT: [],
-      };
+      return { EM: "Product is already in cart!", EC: 1, DT: [], };
     }
-    await db.Heart.create({
-      UserId: userId,
-      ProductId: productId,
-    });
-    return {
-      EM: "Added product successfully!",
-      EC: 0,
-      DT: [],
-    };
+    await db.Cart.create({ UserId: idUser, ProductId: idProduct, });
+    return { EM: "Added product successfully!", EC: 0, DT: [], };
   } catch (error) {
-    console.log(error);
-    return {
-      EM: "Something wrongs with services",
-      EC: 1,
-      DT: [],
-    };
+    return { EM: "Something wrongs with services", EC: 1, DT: [], };
   }
 };
 
-const updateRole = async (data) => {
+const updateCart = async (data) => {
   try {
-    let role = await db.Role.findOne({
-      where: {
-        id: data.id,
-      },
+    let role = await db.Cart.findOne({
+      where: { id: data.id, },
     });
     if (role) {
       await role.update({
         url: data.url,
         description: data.description,
       });
-      return {
-        EM: "Update role success",
-        EC: 0,
-        DT: [],
-      };
+      return { EM: "Update role success", EC: 0, DT: [], };
     } else {
-      return {
-        EM: "Role not exist",
-        EC: 2,
-        DT: [],
-      };
+      return { EM: "Cart not exist", EC: 2, DT: [], };
     }
   } catch (error) {
     console.log(error);
-    return {
-      EM: "Something wrongs with services",
-      EC: 1,
-      DT: [],
-    };
+    return { EM: "Something wrongs with services", EC: 1, DT: [], };
   }
 };
 
-const deleteHeart = async (userId, productId) => {
+const deleteCart = async (idUser, idProduct) => {
   try {
-    let cart = await db.Heart.findOne({
-      where: { [Op.and]: [{ UserId: userId }, { ProductId: productId }] },
+    let cart = await db.Cart.findOne({
+      where: { [Op.and]: [{ userId: idUser }, { productId: idProduct }] },
     });
     if (cart) {
       await cart.destroy();
-      return {
-        EM: "Delete cart success",
-        EC: 0,
-        DT: [],
-      };
+      return { EM: "Delete cart success", EC: 0, DT: [], };
     } else {
-      return {
-        EM: "Heart not exist",
-        EC: 2,
-        DT: [],
-      };
+      return { EM: "Cart not exist", EC: 2, DT: [], };
     }
   } catch (error) {
-    return {
-      EM: "Something wrongs with services",
-      EC: 1,
-      DT: [],
-    };
+    return { EM: "Something wrongs with services", EC: 1, DT: [], };
   }
 };
 
 module.exports = {
-  readHeart,
-  readHeartWithPagination,
-  readProductCheckHeart,
-  createHeart,
-  updateRole,
-  deleteHeart,
+  readCart,
+  readCartTotal,
+  readCartWithIdUser,
+  createCart,
+  updateCart,
+  deleteCart,
 };

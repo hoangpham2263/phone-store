@@ -7,10 +7,13 @@ import roleController from "../controllers/roleController";
 import productController from "../controllers/productController";
 import categoriesController from "../controllers/categoriesController";
 import brandController from "../controllers/brandController";
+import cartController from "../controllers/cartController";
+import { checkUserJWT, checkUserPermission } from "../middleware/JWTAction";
 
 const router = express.Router();
 
 const adminRoute = (app) => {
+  const authMiddlewares = [checkUserJWT, checkUserPermission]
 
   // login and register
   router.post("/user/register", registerLoginController.registerUser);
@@ -28,6 +31,12 @@ const adminRoute = (app) => {
   router.get("/product/read", productController.readFunc);
   router.get("/categories/read", categoriesController.readFunc);
   router.get("/brand/read", brandController.readFunc);
+
+  // CRUD cart need login
+  router.get("/cart/read", cartController.readFunc);
+  router.post("/cart/create", cartController.createFunc);
+  router.put("/cart/update", cartController.updateFunc);
+  router.delete("/cart/delete", cartController.deleteFunc);
 
   return app.use("/api/v1", router);
 };

@@ -4,7 +4,7 @@ const getGroupWithRoles = async (user) => {
   //scope
   let roles = await db.Group.findOne({
     where: { id: user.groupId },
-    attributes: ["id", "name", "description"],
+    attributes: ["id", "name"],
     include: {
       model: db.Role,
       attributes: ["id", "url", "description"],
