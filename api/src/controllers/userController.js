@@ -66,11 +66,9 @@ const createFunc = async (req, res) => {
 const updateFunc = async (req, res) => {
   try {
     let data = await userService.updateUser(req.body.data);
-    return res.status(200).json({
-      EM: data.EM,
-      EC: data.EC,
-      DT: data.DT,
-    });
+
+    res.cookie("jwt", data.DT.access_token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
+    return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
   } catch (error) {
     console.log(error);
     return res.status(500).json({

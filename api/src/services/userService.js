@@ -1,5 +1,7 @@
 import db from "../models/index";
 import bcrypt from "bcryptjs";
+import { getGroupWithRoles } from "./JWTService";
+import { createJWT } from "../middleware/JWTAction";
 
 const getAllUser = async () => {
   try {
@@ -145,45 +147,46 @@ const createNewUser = async (data) => {
 
 const updateUser = async (data) => {
   try {
-    // if (!data.groupId) {
-    //   return {
-    //     EM: "Error with empty GroupId",
-    //     EC: 1,
-    //     DT: [],
-    //   };
-    // }
     let user = await db.User.findOne({
       where: {
         id: data.id,
       },
     });
     if (user) {
+      const updateUser = await user.update({ lastName: data.lastName, firstName: data.firstName, address: data.address, sex: data.sex, groupId: data.groupId });
+
+      let { id, lastName, firstName, phone, address, sex } = updateUser;
+      let groupWithRoles = await getGroupWithRoles(updateUser);
+      let payload = {
+        user: {
+          id: id,
+          firstName: firstName,
+          lastName: lastName,
+          phone: phone,
+          address: address,
+          email: user.email,
+          sex: sex
+        },
+        groupWithRoles,
+      };
+      let token = await createJWT(payload);
       await user.update({
-        lastName: data.lastName,
-        firstName: data.firstName,
-        address: data.address,
-        sex: data.sex,
-        groupId: data.groupId,
+        refreshToken: token,
       });
       return {
         EM: "Update user success",
         EC: 0,
-        DT: [],
+        DT: {
+          access_token: token,
+          groupWithRoles,
+        },
       };
     } else {
-      return {
-        EM: "User not exist",
-        EC: 2,
-        DT: [],
-      };
+      return { EM: "User not exist", EC: 2, DT: [], };
     }
   } catch (error) {
     console.log(error);
-    return {
-      EM: "Something wrongs with services",
-      EC: 1,
-      DT: [],
-    };
+    return { EM: "Something wrongs with services", EC: 1, DT: [], };
   }
 };
 

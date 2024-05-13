@@ -103,16 +103,17 @@ const handleLoginUser = async (data) => {
     if (user) {
       let isCorrectPassword = await checkPassword(data.password, user.password);
       if (isCorrectPassword) {
-        let { id, lastName, firstName, address, sex } = user.dataValues;
-        let dataUsers = { lastName, firstName, address, sex };
+        let { id, lastName, firstName, phone, address, sex } = user.dataValues;
         let groupWithRoles = await getGroupWithRoles(user);
         let payload = {
           user: {
             id: id,
             firstName: firstName,
             lastName: lastName,
+            phone: phone,
             address: address,
             email: user.email,
+            sex: sex
           },
           groupWithRoles,
         };
@@ -126,7 +127,6 @@ const handleLoginUser = async (data) => {
           DT: {
             access_token: token,
             groupWithRoles,
-            dataUsers,
           },
         };
       }
