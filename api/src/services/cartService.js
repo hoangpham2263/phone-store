@@ -4,7 +4,7 @@ const { Op } = require("sequelize");
 const readCart = async (idUser) => {
   try {
     let data = await db.Cart.findAll({
-      attributes: ["id", "userId", "productId"],
+      attributes: ["id", "title", "image", "color", "capacity", "price", "priceDiscount", "percentDiscount", "slug", "userId"],
       order: [["userId", "ASC"]],
       where: { userId: idUser },
     });
@@ -19,7 +19,7 @@ const readCartTotal = async (idUser) => {
   try {
     let countProduct = 0
     let data = await db.Cart.findAll({
-      attributes: ["id", "userId", "productId"],
+      attributes: ["id", "userId"],
       order: [["userId", "ASC"]],
       where: { userId: idUser },
     });
@@ -37,10 +37,12 @@ const readCartWithIdUser = async (page, limit, idUser) => {
     let { count, rows } = await db.Cart.findAndCountAll({
       offset: offset,
       limit: limit,
-      attributes: ["id", "userId", "productId"],
+      attributes: ["id", "title", "image", "color", "capacity", "price", "priceDiscount", "percentDiscount", "slug", "userId"],
       order: [["userId", "ASC"]],
       where: { userId: idUser },
-      include: [{ model: db.User, attributes: ["id", "lastName", "firstName", "phone", "email", "address", "sex"] }, { model: db.Product, attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId", "brandId"] }],
+      include: [
+        { model: db.User, attributes: ["id", "lastName", "firstName", "phone", "email", "address", "sex"] },
+      ],
     });
     const totalPages = Math.ceil(count / limit);
     let data = { totalRows: count, totalPages: totalPages, carts: rows, };
@@ -51,15 +53,31 @@ const readCartWithIdUser = async (page, limit, idUser) => {
   }
 };
 
-const createCart = async (idUser, idProduct) => {
+const createCart = async (data) => {
   try {
+    const { title, image, color, capacity, price, priceDiscount, percentDiscount, slug, idUser } = data
     let isUser = await db.Cart.findOne({
-      where: { [Op.and]: [{ userId: idUser }, { productId: idProduct }] },
+      where: {
+        [Op.and]: [
+          { title: title }, { image: image }, { color: color }, { capacity: capacity }, { price: price },
+          { priceDiscount: priceDiscount }, { percentDiscount: percentDiscount }, { slug: slug }, { userId: idUser }
+        ]
+      },
     });
     if (isUser) {
       return { EM: "Product is already in cart!", EC: 1, DT: [], };
     }
-    await db.Cart.create({ UserId: idUser, ProductId: idProduct, });
+    await db.Cart.create({
+      title: title,
+      image: image,
+      color: color,
+      capacity: capacity,
+      price: price,
+      priceDiscount: priceDiscount,
+      percentDiscount: percentDiscount,
+      slug: slug,
+      userId: idUser
+    });
     return { EM: "Added product successfully!", EC: 0, DT: [], };
   } catch (error) {
     return { EM: "Something wrongs with services", EC: 1, DT: [], };
@@ -89,7 +107,7 @@ const updateCart = async (data) => {
 const deleteCart = async (idUser, idProduct) => {
   try {
     let cart = await db.Cart.findOne({
-      where: { [Op.and]: [{ userId: idUser }, { productId: idProduct }] },
+      where: { [Op.and]: [{ userId: idUser }, { id: idProduct }] },
     });
     if (cart) {
       await cart.destroy();

@@ -47,7 +47,7 @@ const loginUser = async (req, res) => {
 
     let data = await registerLoginService.handleLoginUser(req.body.data);
 
-    res.cookie("jwt", data.DT.access_token, { httpOnly: true, maxAge: 1 * 60 * 60 * 1000 });
+    res.cookie("jwt", data.DT.access_token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
 
     return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
   } catch (error) {

@@ -22,8 +22,7 @@ const readFunc = async (req, res) => {
 
 const createFunc = async (req, res) => {
   try {
-    const { idUser, idProduct } = req.body.data
-    let data = await cartService.createCart(+idUser, +idProduct);
+    let data = await cartService.createCart(req.body.data);
     return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
   } catch (error) {
     console.log(error);

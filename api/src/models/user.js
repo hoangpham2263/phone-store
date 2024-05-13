@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       User.belongsTo(models.Group);
-      User.belongsToMany(models.Product, { through: "Cart" });
+      User.hasMany(models.Cart, { foreignKey: 'userId' });
     }
   }
   User.init(

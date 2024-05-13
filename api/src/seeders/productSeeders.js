@@ -12,6 +12,216 @@ module.exports = {
       "Product",
       [
         {
+          "id": 37,
+          "title": "Samsung Galaxy Z Fold5 5G 512GB",
+          "price": 44990000,
+          "version": "z",
+          "quantity": 100,
+          "image": '{"blue": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403169/ecommerce/vornvidzpe6lqaxsolj1.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/mat0rf3baj2porfjypq5.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403170/ecommerce/ezpspacu0hvlzxjrimfh.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403170/ecommerce/zlgzrss2szqzqftamig8.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/dsdoxrku5zs3obpyd3qu.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/fohzdv4vtaei0dyulbll.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/l5l2ersldj4n1qs70mc1.jpg"],"black": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/eztjhhitdeu6ku5ve2rm.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/kcefdd2jvrnjmgv1x0yp.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403169/ecommerce/ef1d2e3cbti7wwuijvx3.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403169/ecommerce/spfovndxwfmf9sy43bnv.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/g4dthfd8wwq03sbxj81k.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/ytx18zisjkaw1bpy14md.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/q3u62rvflox2nvvks6tb.jpg"],"cream": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403170/ecommerce/n1uq9ltjeja3exzhblcm.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/giut4zlghu9ghyoxsppb.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403170/ecommerce/qnvndp2oinhohxquf9nq.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403170/ecommerce/zgbnvwftddn2seib6j90.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/k9jtgm42v0ic0cepbb3y.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403170/ecommerce/i3nrvjrnck3al7g1kwqm.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/agsfgck6cdepvfnogtc3.jpg"]}',
+          "capacity": '["512GB"]',
+          "color": '["black","blue","cream"]',
+          "percentDiscount": 30,
+          "slug": "samsung-galaxy-z-fold5-5g-512gb",
+          "categoriesId": 1,
+          "brandId": 2
+        },
+        {
+          "id": 36,
+          "title": "Samsung Galaxy Z Fold5 5G 256GB",
+          "price": 40990000,
+          "version": "z",
+          "quantity": 100,
+          "image": '{"blue": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403169/ecommerce/vornvidzpe6lqaxsolj1.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/mat0rf3baj2porfjypq5.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403170/ecommerce/ezpspacu0hvlzxjrimfh.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403170/ecommerce/zlgzrss2szqzqftamig8.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/dsdoxrku5zs3obpyd3qu.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/fohzdv4vtaei0dyulbll.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/l5l2ersldj4n1qs70mc1.jpg"],"black": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/eztjhhitdeu6ku5ve2rm.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/kcefdd2jvrnjmgv1x0yp.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403169/ecommerce/ef1d2e3cbti7wwuijvx3.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403169/ecommerce/spfovndxwfmf9sy43bnv.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/g4dthfd8wwq03sbxj81k.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/ytx18zisjkaw1bpy14md.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/q3u62rvflox2nvvks6tb.jpg"],"cream": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403170/ecommerce/n1uq9ltjeja3exzhblcm.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/giut4zlghu9ghyoxsppb.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403170/ecommerce/qnvndp2oinhohxquf9nq.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403170/ecommerce/zgbnvwftddn2seib6j90.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/k9jtgm42v0ic0cepbb3y.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403170/ecommerce/i3nrvjrnck3al7g1kwqm.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403171/ecommerce/agsfgck6cdepvfnogtc3.jpg"]}',
+          "capacity": '["256GB"]',
+          "color": '["black","blue","cream"]',
+          "percentDiscount": 14,
+          "slug": "samsung-galaxy-z-fold5-5g-256gb",
+          "categoriesId": 1,
+          "brandId": 2
+        },
+        {
+          "id": 35,
+          "title": "Samsung Galaxy Z Flip5 5G 512GB",
+          "price": 29990000,
+          "version": "z",
+          "quantity": 100,
+          "image": '{"grey": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/g1l7icemdw1csbzi4gow.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/n0pgysfqe2n7ksvarmtv.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402956/ecommerce/oj8mqpeu8ryjo0sv5xfl.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/apzjrmvszbcg3mo24puy.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402958/ecommerce/ihl5gtnc42hr5v7xalg3.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402956/ecommerce/qg1lcd5zpg1wrigd3cxl.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402958/ecommerce/uzovvvhy7sqx8xawsoct.jpg"],"cream": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402956/ecommerce/wb3vx2vkyg3jarwiwxom.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/w31axb5rde5pescxrch9.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/zylvpudqfsz06wnof9bp.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/ftcpwxkydrt7b1vfrves.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/bq3dezvrvhfadprfc3q2.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402958/ecommerce/tauxm5va9peh6qesi82y.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402956/ecommerce/eay4tsu9cgdhxhnvuvdz.jpg"],"green": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402956/ecommerce/lvbolrt9i4kh90imczil.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/hs8vighfgwbgevk5zm8b.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/baivcemz3ojg8jzs6ajg.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/kvgc3d8vegqe8xtovesi.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/t9kqifc0jdj1qznijjjr.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402958/ecommerce/t1hayh66j5hw4mwrm5fo.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/iboo9lh2oxqqpmd3pe7j.jpg"],"purple": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/ypc9ywdnjfnopor8i0ex.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/feblblgwe5m1elglmviu.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402956/ecommerce/uiuk8g12aw0nkdjgskbw.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/oh4xuapwr8qsum6xmoa8.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402958/ecommerce/ppcdpiikb1lddoecnotd.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/bhk1j3spuhd2fb2kodco.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402956/ecommerce/zgmh8ilccaqrkx3x5dnw.jpg"]}',
+          "capacity": '["512GB"]',
+          "color": '["cream","green","grey","purple"]',
+          "percentDiscount": 26,
+          "slug": "samsung-galaxy-z-flip5-5g-512gb",
+          "categoriesId": 1,
+          "brandId": 2
+        },
+        {
+          "id": 34,
+          "title": "Samsung Galaxy Z Flip5 5G 256GB",
+          "price": 25990000,
+          "version": "z",
+          "quantity": 100,
+          "image": '{"grey": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/g1l7icemdw1csbzi4gow.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/n0pgysfqe2n7ksvarmtv.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402956/ecommerce/oj8mqpeu8ryjo0sv5xfl.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/apzjrmvszbcg3mo24puy.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402958/ecommerce/ihl5gtnc42hr5v7xalg3.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402956/ecommerce/qg1lcd5zpg1wrigd3cxl.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402958/ecommerce/uzovvvhy7sqx8xawsoct.jpg"],"cream": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402956/ecommerce/wb3vx2vkyg3jarwiwxom.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/w31axb5rde5pescxrch9.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/zylvpudqfsz06wnof9bp.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/ftcpwxkydrt7b1vfrves.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/bq3dezvrvhfadprfc3q2.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402958/ecommerce/tauxm5va9peh6qesi82y.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402956/ecommerce/eay4tsu9cgdhxhnvuvdz.jpg"],"green": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402956/ecommerce/lvbolrt9i4kh90imczil.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/hs8vighfgwbgevk5zm8b.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/baivcemz3ojg8jzs6ajg.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/kvgc3d8vegqe8xtovesi.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/t9kqifc0jdj1qznijjjr.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402958/ecommerce/t1hayh66j5hw4mwrm5fo.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/iboo9lh2oxqqpmd3pe7j.jpg"],"purple": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/ypc9ywdnjfnopor8i0ex.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/feblblgwe5m1elglmviu.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402956/ecommerce/uiuk8g12aw0nkdjgskbw.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/oh4xuapwr8qsum6xmoa8.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402958/ecommerce/ppcdpiikb1lddoecnotd.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402957/ecommerce/bhk1j3spuhd2fb2kodco.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402956/ecommerce/zgmh8ilccaqrkx3x5dnw.jpg"]}',
+          "capacity": '["256GB"]',
+          "color": '["cream","green","grey","purple"]',
+          "percentDiscount": 34,
+          "slug": "samsung-galaxy-z-flip5-5g-256gb",
+          "categoriesId": 1,
+          "brandId": 2
+        },
+        {
+          "id": 41,
+          "title": "Samsung Galaxy S24 5G 512GB",
+          "price": 26490000,
+          "version": "s",
+          "quantity": 100,
+          "image": '{"gold": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404352/ecommerce/sbrgyqgaexqkjehuqrcl.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404351/ecommerce/paaxzearvynmz4g5il5f.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404351/ecommerce/zrsrig3hm4ppvghbpvyk.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404352/ecommerce/ofe73jwsxrlqnkp1mcjl.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404352/ecommerce/vnltmgwo8bj30ofmjvew.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404352/ecommerce/k9cruuridlafwt1kt2eg.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404352/ecommerce/qcknqvy0swf70mi5rqgv.jpg"],"grey": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404351/ecommerce/us1iwrmsvtlloljt9blp.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404351/ecommerce/iqrvsjjd0cq8imd6ghdw.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404351/ecommerce/xthbwoipouodthwlaarf.jpg"],"black": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404351/ecommerce/ebzvskxijn87mmeqeei8.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404351/ecommerce/kfagxkror3g5skjwzdyh.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404350/ecommerce/n9cuxmezjdooydlqjm1h.jpg"],"purple": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404352/ecommerce/dlg2xzdvnai7zyujfkta.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404351/ecommerce/idserc7qpd6qbfpriiof.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404351/ecommerce/murzuzecksflhghvltw4.jpg"]}',
+          "capacity": '["512GB"]',
+          "color": '["black","gold","grey","purple"]',
+          "percentDiscount": 13,
+          "slug": "samsung-galaxy-s24-5g-512gb",
+          "categoriesId": 1,
+          "brandId": 2
+        },
+        {
+          "id": 40,
+          "title": "Samsung Galaxy S24 5G 256GB",
+          "price": 22990000,
+          "version": "s",
+          "quantity": 100,
+          "image": '{"gold": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404352/ecommerce/sbrgyqgaexqkjehuqrcl.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404351/ecommerce/paaxzearvynmz4g5il5f.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404351/ecommerce/zrsrig3hm4ppvghbpvyk.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404352/ecommerce/ofe73jwsxrlqnkp1mcjl.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404352/ecommerce/vnltmgwo8bj30ofmjvew.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404352/ecommerce/k9cruuridlafwt1kt2eg.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404352/ecommerce/qcknqvy0swf70mi5rqgv.jpg"],"grey": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404351/ecommerce/us1iwrmsvtlloljt9blp.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404351/ecommerce/iqrvsjjd0cq8imd6ghdw.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404351/ecommerce/xthbwoipouodthwlaarf.jpg"],"black": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404351/ecommerce/ebzvskxijn87mmeqeei8.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404351/ecommerce/kfagxkror3g5skjwzdyh.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404350/ecommerce/n9cuxmezjdooydlqjm1h.jpg"],"purple": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404352/ecommerce/dlg2xzdvnai7zyujfkta.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404351/ecommerce/idserc7qpd6qbfpriiof.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715404351/ecommerce/murzuzecksflhghvltw4.jpg"]}',
+          "capacity": '["256GB"]',
+          "color": '["black","gold","grey","purple"]',
+          "percentDiscount": 4,
+          "slug": "samsung-galaxy-s24-5g-256gb",
+          "categoriesId": 1,
+          "brandId": 2
+        },
+        {
+          "id": 39,
+          "title": "Samsung Galaxy S23 Ultra 5G 512GB",
+          "price": 36990000,
+          "version": "s",
+          "quantity": 100,
+          "image": '{"black": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/ejzyiah997ydster7bkh.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/wnnexgpkha0g3z38pore.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/e4bftjmvhszwyvcic7uf.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403961/ecommerce/ihxmpggiuqu4hhp4qvq1.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403961/ecommerce/f4j51yib3b2lxha08gws.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403961/ecommerce/mzsyj9ib5uwzkiiyz2gj.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/rlgi7f6in2xhgcarbsgr.jpg"],"cream": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/q439kyrfqktzy41erdpl.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/ndyckygrxst84kbhvjz9.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403959/ecommerce/orkwp8y2hqp0rqyufumc.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/dxjwwryb9gxpjjjpgjzc.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/pwzbtovqf4suylkeqz25.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/lexmnlesnxnl66hy9dzh.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/rwot1yp68rezs0jvx2rn.jpg"],"green": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/rgctua4c59hpefq6m5ty.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/dzgiekyzpvio0hholseq.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/s4cezqfu3levdzy7mbot.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403961/ecommerce/zqdtdztcnkggrojcewfm.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403961/ecommerce/ph7jmqgud9yzwlpk6jeb.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/kkntpudtq7lewpu5hzfh.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403961/ecommerce/zo2rvjwqtfm1cmboli6u.jpg"],"purple": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/h0uvuhl2osbrtat6wo7m.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/xtc3znwp4trbjbd3gmx8.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/zlk7bfmcwfjlxzbsbz62.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/sfzqeg0xnuxieqmiix0q.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403961/ecommerce/fjnw6nnysalczjw97rcg.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/b9hdvemmdx9n6g2l2qis.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403961/ecommerce/wdyyfmhvgx32j6cz2c3w.jpg"]}',
+          "capacity": '["512GB"]',
+          "color": '["green","black","purple","cream"]',
+          "percentDiscount": 27,
+          "slug": "samsung-galaxy-s23-ultra-5g-512gb",
+          "categoriesId": 1,
+          "brandId": 2
+        },
+        {
+          "id": 38,
+          "title": "Samsung Galaxy S23 Ultra 5G 256GB",
+          "price": 24990000,
+          "version": "s",
+          "quantity": 100,
+          "image": '{"black": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/ejzyiah997ydster7bkh.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/wnnexgpkha0g3z38pore.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/e4bftjmvhszwyvcic7uf.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403961/ecommerce/ihxmpggiuqu4hhp4qvq1.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403961/ecommerce/f4j51yib3b2lxha08gws.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403961/ecommerce/mzsyj9ib5uwzkiiyz2gj.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/rlgi7f6in2xhgcarbsgr.jpg"],"cream": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/q439kyrfqktzy41erdpl.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/ndyckygrxst84kbhvjz9.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403959/ecommerce/orkwp8y2hqp0rqyufumc.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/dxjwwryb9gxpjjjpgjzc.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/pwzbtovqf4suylkeqz25.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/lexmnlesnxnl66hy9dzh.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/rwot1yp68rezs0jvx2rn.jpg"],"green": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/rgctua4c59hpefq6m5ty.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/dzgiekyzpvio0hholseq.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/s4cezqfu3levdzy7mbot.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403961/ecommerce/zqdtdztcnkggrojcewfm.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403961/ecommerce/ph7jmqgud9yzwlpk6jeb.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/kkntpudtq7lewpu5hzfh.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403961/ecommerce/zo2rvjwqtfm1cmboli6u.jpg"],"purple": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/h0uvuhl2osbrtat6wo7m.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/xtc3znwp4trbjbd3gmx8.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/zlk7bfmcwfjlxzbsbz62.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/sfzqeg0xnuxieqmiix0q.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403961/ecommerce/fjnw6nnysalczjw97rcg.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403960/ecommerce/b9hdvemmdx9n6g2l2qis.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715403961/ecommerce/wdyyfmhvgx32j6cz2c3w.jpg"]}',
+          "capacity": '["256GB"]',
+          "color": '["green","black","purple","cream"]',
+          "percentDiscount": 16,
+          "slug": "samsung-galaxy-s23-ultra-5g-256gb",
+          "categoriesId": 1,
+          "brandId": 2
+        },
+        {
+          "id": 28,
+          "title": "Samsung Galaxy M54 5G 256GB",
+          "price": 8990000,
+          "version": "m",
+          "quantity": 100,
+          "image": '{"white": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330527/ecommerce/pgysb6ujhvr3de9finj8.png"],"darkblue": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330527/ecommerce/zdowtzd2ofvmdeq7wd7q.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330526/ecommerce/rd0fpfbyimjtwz95zlup.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330526/ecommerce/ut8bro4il4yjqrekhu0w.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330527/ecommerce/w9m79ucobfzc3yryxobz.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330527/ecommerce/hy2blkmodwxglih2fnsu.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330527/ecommerce/mlj7r06s8zvx3iaovgaq.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330527/ecommerce/dlur3losr7e6c84avrfb.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330526/ecommerce/dtmmymupsupzicbfycyd.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330527/ecommerce/uflztjv7dfpevwyxds2h.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330527/ecommerce/gdpzudz8wxarqomykiql.jpg"]}',
+          "capacity": '["256GB"]',
+          "color": '["darkblue","white"]',
+          "percentDiscount": 2,
+          "slug": "samsung-galaxy-m54-5g-256gb",
+          "categoriesId": 1,
+          "brandId": 2
+        },
+        {
+          "id": 27,
+          "title": "Samsung Galaxy M34 5G 128GB",
+          "price": 7990000,
+          "version": "m",
+          "quantity": 100,
+          "image": '{"darkblue": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330233/ecommerce/gz0e9ozma1u4cdiobs8q.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330232/ecommerce/aevlacwxznlfahza00ou.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330232/ecommerce/uytouwaqhf2qphhiq3ri.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330234/ecommerce/ql4tyoxdbwc20my1egbm.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330234/ecommerce/afxtoc6dj4p0z3jvevk3.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330233/ecommerce/afunpuqf2tnwzmydcnpw.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330235/ecommerce/q2nnm3n7sofgqgv8lvzo.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330234/ecommerce/bmsigg2xtr7brzqppz2v.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330233/ecommerce/cgeqrhlq3ztb0kpyp9xo.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330233/ecommerce/f2qpuvoavpjmyguweowq.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330234/ecommerce/qo3cwr44dgqz2itdmesc.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330232/ecommerce/nzv56nwhd5fxenlvxllh.jpg"],"lightblue": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330234/ecommerce/x6jnoqipam9kpxt7mi2e.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330233/ecommerce/uiy7scgx3icrywr8tx2n.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330233/ecommerce/h5joqvoo6jd8gu8g8dci.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330233/ecommerce/rq4m1lzqafhkavtcn4ov.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330234/ecommerce/glgtpu7xqeovqjokqx1b.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330233/ecommerce/rjmljig21pdsb6im6tnw.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330235/ecommerce/ebkxz1fodxiqantp2whs.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330233/ecommerce/vyzsoackzf71ucnkxihs.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330234/ecommerce/dikiuyalsls4oiz1uud5.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330234/ecommerce/u9ba9itnlwnyzlgbva23.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330234/ecommerce/fet3wwcwkl9zszkytcnb.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330235/ecommerce/smpwo3d7usllpziegqev.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715330233/ecommerce/xp7ecc48hjog4ciynlss.jpg"]}',
+          "capacity": '["128GB"]',
+          "color": '["darkblue","lightblue"]',
+          "percentDiscount": 27,
+          "slug": "samsung-galaxy-m34-5g-128gb",
+          "categoriesId": 1,
+          "brandId": 2
+        },
+        {
+          "id": 33,
+          "title": "Samsung Galaxy A15 256 GB",
+          "price": 5590000,
+          "version": "a",
+          "quantity": 100,
+          "image": '{"blue": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402358/ecommerce/danwd81ehbuimiv7teut.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402357/ecommerce/u2v8ig2lmeihwt4tmfr1.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402357/ecommerce/bzwcv0su2hq10x5qjwp1.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402358/ecommerce/wu19wgg6yic71oduoxme.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402357/ecommerce/wymee28nui8apfm0pezo.jpg"],"gold": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402358/ecommerce/htinuh0adlcgqlf5sin0.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402358/ecommerce/hva6gff5p2tawzdkc8yy.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402358/ecommerce/wlwdlnyvm94g47twnypb.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402358/ecommerce/rhwekmcrhbzih2uzz8ob.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402358/ecommerce/cpx8uzam6etoe33pigtk.jpg"],"black": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402358/ecommerce/zrx7rrhkfomzkqppjdw0.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402357/ecommerce/tuqdqqxdxihgtk1hk3af.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402358/ecommerce/ey6jcy7h6r1ikjkdla1y.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402358/ecommerce/dwxgfqxujpplnruf0wyk.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402357/ecommerce/pdq9srvfvwvtowdigsuj.jpg"]}',
+          "capacity": '["256GB"]',
+          "color": '["black","blue","gold"]',
+          "percentDiscount": 10,
+          "slug": "samsung-galaxy-a15-256gb",
+          "categoriesId": 1,
+          "brandId": 2
+        },
+        {
+          "id": 32,
+          "title": "Samsung Galaxy A15 128GB",
+          "price": 4990000,
+          "version": "a",
+          "quantity": 100,
+          "image": '{"blue": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402358/ecommerce/danwd81ehbuimiv7teut.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402357/ecommerce/u2v8ig2lmeihwt4tmfr1.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402357/ecommerce/bzwcv0su2hq10x5qjwp1.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402358/ecommerce/wu19wgg6yic71oduoxme.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402357/ecommerce/wymee28nui8apfm0pezo.jpg"],"gold": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402358/ecommerce/htinuh0adlcgqlf5sin0.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402358/ecommerce/hva6gff5p2tawzdkc8yy.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402358/ecommerce/wlwdlnyvm94g47twnypb.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402358/ecommerce/rhwekmcrhbzih2uzz8ob.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402358/ecommerce/cpx8uzam6etoe33pigtk.jpg"],"black": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402358/ecommerce/zrx7rrhkfomzkqppjdw0.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402357/ecommerce/tuqdqqxdxihgtk1hk3af.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402358/ecommerce/ey6jcy7h6r1ikjkdla1y.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402358/ecommerce/dwxgfqxujpplnruf0wyk.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402357/ecommerce/pdq9srvfvwvtowdigsuj.jpg"]}',
+          "capacity": '["128GB"]',
+          "color": '["black","blue","gold"]',
+          "percentDiscount": 10,
+          "slug": "samsung-galaxy-a15-128gb",
+          "categoriesId": 1,
+          "brandId": 2
+        },
+        {
+          "id": 31,
+          "title": "Samsung Galaxy A14 5G 128GB",
+          "price": 4490000,
+          "version": "a",
+          "quantity": 100,
+          "image": '{"red": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/lsqgncpg4l5ddieran3w.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/pp0yqr5edc3hveymwtkd.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/ccs0culo8ucbi0zy3bw9.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402163/ecommerce/jqvdy4mzz80vf90rfwug.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402165/ecommerce/qorbnqitstlpiivtz3nw.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/mwppdu31clcazorcfsta.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/pwhadt8xmggso423aekg.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402165/ecommerce/fm6molxtvcfkrhmpefnl.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/gnp25ulfpdgkfgv009rp.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402165/ecommerce/ecsvsgfrwxnvyum5wwlk.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402163/ecommerce/c1vf3fy66ow4ipycru9c.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/h1mymbypmbo7bq9ynx58.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402165/ecommerce/grja1usud1yw2q7cso13.jpg"],"black": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/dxjcfnwhlmp9gn5trwlf.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402163/ecommerce/nnt74w6ftvzxskht3gd4.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/kh814m2u328tzfk3ywoa.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402165/ecommerce/rcaxuguimycveoj80tkn.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/u0flakrf9y8qlvkarunw.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/pd2blccjymk5ks5w69fn.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/autglhfbtk35v8qgrxbr.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/zdrbcae7zdcwa0rfuoyr.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/apwlzmazsrjy5jk0qypz.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/sqrfdrbvy0qmnzaf305m.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/h51ctahf227wqlit507v.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/qo4kpswg7oud8ippwcuh.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/cjib8suis1aaauycqwym.jpg"],"silver": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402163/ecommerce/vx8kulaeb7ihg4yrq6wo.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402163/ecommerce/ac44hsp5gfulzrtncqc9.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/gntuds0jb3ysqcnprrkd.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/bwplprpauqstykc3lv74.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/twhvs4qncbb9qbraaiba.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/cjqmdi0vujlliuqwu6kz.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/jtyoylno76rbitrro2iu.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/tfgwi9q5gxdcdwma2uvo.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402165/ecommerce/brvqm0qpyzsgffnly7sv.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402165/ecommerce/hroop5w5mt60urleknou.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/ju6bgjk6jx7w547ys1fo.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/g8m3yq6fshvndo1qanb1.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402164/ecommerce/uwuozs4867ispuxkzphs.jpg"]}',
+          "capacity": '["128GB"]',
+          "color": '["black","red","silver"]',
+          "percentDiscount": 26,
+          "slug": "samsung-galaxy-a14-5g-128gb",
+          "categoriesId": 1,
+          "brandId": 2
+        },
+        {
+          "id": 30,
+          "title": "Samsung Galaxy A05s 128GB",
+          "price": 4490000,
+          "version": "a",
+          "quantity": 100,
+          "image": '{"black": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402027/ecommerce/ve7iccheslqwuinhva7b.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402026/ecommerce/cvguo5ctujgkvssqgrbj.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402026/ecommerce/wvff4fvrc7vre7rlyboo.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402027/ecommerce/tgmt3q2ufx7ind5jlk2z.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402027/ecommerce/z7qyruyyojqwcmrwjgak.jpg"],"green": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402027/ecommerce/galfwu1gsb0epziuchbh.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402026/ecommerce/rbkpzhsnjzeejcmvcidr.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402026/ecommerce/rzgxwsahqgiq4fjtbyhk.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402027/ecommerce/dx4ixf37xnsvdkryrfpx.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402026/ecommerce/d4llrscfodo0p8cttzzl.jpg"],"silver": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402026/ecommerce/k9syrbttwmwazryugpge.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402026/ecommerce/kop1vuov7aujxocvsn4g.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402026/ecommerce/m8i94p1dimn0bvwqkrmr.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402027/ecommerce/hpz5x4h9mfhezky96d4r.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715402027/ecommerce/yqvm2kuous3kcv1hjlcc.jpg"]}',
+          "capacity": '["128GB"]',
+          "color": '["black","green","silver"]',
+          "percentDiscount": 6,
+          "slug": "samsung-galaxy-a05s-128gb",
+          "categoriesId": 1,
+          "brandId": 2
+        },
+        {
+          "id": 29,
+          "title": "Samsung Galaxy A05 128 GB",
+          "price": 3990000,
+          "version": "a",
+          "quantity": 100,
+          "image": '{"black": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401744/ecommerce/zu5cslzmqc2zvaq1csjj.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/ndt81asgrtbmrjrcrh2p.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/kgl7ngsmytm2s5njltv7.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401747/ecommerce/o6hri0e9boxakpvy8vtx.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/s2qsryxb5xwyyg4rzqwj.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/xcoc0txlfgv52swofazx.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/xbtzhoucebh7wle9vcns.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/jalzkdxdy4rgurkivpuu.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/ssu1hqgmeu9m7vuyw8sa.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/mwbi4b1lbprxn36pp1xn.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/ej0avj2a8d60cpbuhepz.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/xznubgji7pqafu5ur7h9.jpg"],"green": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/mhvwctrqvpzkdn13osyo.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/dlmk9augw4ego7bg0gse.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/acmcaml8zunh6quhdweg.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/iwpvhcju15bqleb74frw.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/yjrlbl1xkvndnaxe3tso.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/pelndqlbmrawcrk1k701.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/u8ubhvqahom4dkwerhun.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/mwkacipqgcdmzyz78lhb.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401746/ecommerce/wjbp9qke1ltbuk0psizd.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/dgepbqazofjfnbicsdaz.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401746/ecommerce/lzzwntzgd9ejnfn3rb3p.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/m2y9cxy6hzvsm7h2oude.jpg"],"silver": ["https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/xt2jjq7n4xajurz7lu5g.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/dnofrldukcivjjljgtrk.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/ogyybzqz4es8nz4v7x1h.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/d0nrjl9ucixjqfxyaxsd.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/sxf39o6jdgdod00u1ail.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/p2lbnjjaiw9fr9zeyjsu.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/rcy2pykio52gfotge6fs.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/xyzfxjmgtrihbwh2gewg.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/pebt4qugxwwfosfg3ckl.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/tedxlkqugrpskkcvko9p.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/uyvwkakrzgqtymu9secv.jpg","https://res.cloudinary.com/dqhj1sukr/image/upload/v1715401745/ecommerce/nf2payf8ynxdtururv0v.jpg"]}',
+          "capacity": '["128GB"]',
+          "color": '["black","green","silver"]',
+          "percentDiscount": 7,
+          "slug": "samsung-galaxy-a05-128-gb",
+          "categoriesId": 1,
+          "brandId": 2
+        },
+        {
           "id": 25,
           "title": "iPhone 15 Pro Max 512GB",
           "price": 40990000,
@@ -23,7 +233,7 @@ module.exports = {
           "percentDiscount": 11,
           "slug": "iphone-15-pro-max-512gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 24,
@@ -37,7 +247,7 @@ module.exports = {
           "percentDiscount": 15,
           "slug": "iphone-15-pro-max-256gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 26,
@@ -51,7 +261,7 @@ module.exports = {
           "percentDiscount": 8,
           "slug": "iphone-15-pro-max-1tb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 23,
@@ -65,7 +275,7 @@ module.exports = {
           "percentDiscount": 8,
           "slug": "iphone-15-pro-512gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 22,
@@ -79,7 +289,7 @@ module.exports = {
           "percentDiscount": 13,
           "slug": "iphone-15-pro-256gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 21,
@@ -93,7 +303,7 @@ module.exports = {
           "percentDiscount": 15,
           "slug": "iphone-15-pro-128gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 20,
@@ -107,7 +317,7 @@ module.exports = {
           "percentDiscount": 8,
           "slug": "iphone-15-plus-512gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 19,
@@ -121,7 +331,7 @@ module.exports = {
           "percentDiscount": 15,
           "slug": "iphone-15-plus-256gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 18,
@@ -135,7 +345,7 @@ module.exports = {
           "percentDiscount": 14,
           "slug": "iphone-15-plus-128gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 17,
@@ -149,7 +359,7 @@ module.exports = {
           "percentDiscount": 13,
           "slug": "iphone-15-256gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 16,
@@ -163,7 +373,7 @@ module.exports = {
           "percentDiscount": 16,
           "slug": "iphone-15-128gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 14,
@@ -177,7 +387,7 @@ module.exports = {
           "percentDiscount": 5,
           "slug": "iphone-14-pro-max-512gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 13,
@@ -191,7 +401,7 @@ module.exports = {
           "percentDiscount": 10,
           "slug": "iphone-14-pro-max-256gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 15,
@@ -205,7 +415,7 @@ module.exports = {
           "percentDiscount": 4,
           "slug": "iphone-14-pro-max-1tb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 12,
@@ -219,7 +429,7 @@ module.exports = {
           "percentDiscount": 7,
           "slug": "iphone-14-pro-max-128gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 11,
@@ -233,7 +443,7 @@ module.exports = {
           "percentDiscount": 12,
           "slug": "iphone-14-plus-256gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 10,
@@ -247,7 +457,7 @@ module.exports = {
           "percentDiscount": 13,
           "slug": "iphone-14-plus-128gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 9,
@@ -261,7 +471,7 @@ module.exports = {
           "percentDiscount": 16,
           "slug": "iphone-14-256gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 8,
@@ -275,7 +485,7 @@ module.exports = {
           "percentDiscount": 19,
           "slug": "iphone-14-128gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 7,
@@ -289,7 +499,7 @@ module.exports = {
           "percentDiscount": 19,
           "slug": "iphone-13-256gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 6,
@@ -303,7 +513,7 @@ module.exports = {
           "percentDiscount": 22,
           "slug": "iphone-13-128gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 3,
@@ -317,7 +527,7 @@ module.exports = {
           "percentDiscount": 19,
           "slug": "iphone-12-64gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 5,
@@ -331,7 +541,7 @@ module.exports = {
           "percentDiscount": 16,
           "slug": "iphone-12-256gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 4,
@@ -345,7 +555,7 @@ module.exports = {
           "percentDiscount": 18,
           "slug": "iphone-12-128gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 1,
@@ -359,7 +569,7 @@ module.exports = {
           "percentDiscount": 24,
           "slug": "iphone-11-64gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         },
         {
           "id": 2,
@@ -373,7 +583,7 @@ module.exports = {
           "percentDiscount": 25,
           "slug": "iphone-11-128gb",
           "categoriesId": 1,
-          "brandId": 1,
+          "brandId": 1
         }
       ],
       {}
