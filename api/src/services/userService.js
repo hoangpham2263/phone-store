@@ -2,34 +2,23 @@ import db from "../models/index";
 import bcrypt from "bcryptjs";
 import { getGroupWithRoles } from "./JWTService";
 import { createJWT } from "../middleware/JWTAction";
+import { UploadCloud } from "../utility/UploadCloud";
 
 const getAllUser = async () => {
   try {
     let users = await db.User.findAll({
-      attributes: ["id", "lastName", "firstName", "phone", "email", "address", "sex"],
+      attributes: ["id", "image", "lastName", "firstName", "phone", "email", "cities", "districts", "address", "sex"],
       include: { model: db.Group, attributes: ["id", "name", "description"] },
       order: [["id", "DESC"]],
     });
     if (users) {
-      return {
-        EM: "Get data success",
-        EC: 0,
-        DT: users,
-      };
+      return { EM: "Get data success", EC: 0, DT: users, };
     } else {
-      return {
-        EM: "Get data success",
-        EC: 0,
-        DT: [],
-      };
+      return { EM: "Get data success", EC: 0, DT: [], };
     }
   } catch (error) {
     console.log(error);
-    return {
-      EM: "Something wrongs with services",
-      EC: 1,
-      DT: [],
-    };
+    return { EM: "Something wrongs with services", EC: 1, DT: [], };
   }
 };
 
@@ -39,36 +28,40 @@ const getUserWithPagination = async (page, limit) => {
     let { count, rows } = await db.User.findAndCountAll({
       offset: offset,
       limit: limit,
-      attributes: ["id", "lastName", "firstName", "phone", "email", "address", "sex", "groupId"],
+      attributes: ["id", "image", "lastName", "firstName", "phone", "email", "cities", "districts", "address", "sex", "groupId"],
       include: { model: db.Group, attributes: ["id", "name", "description"] },
       order: [["id", "DESC"]],
     });
     let totalPages = Math.ceil(count / limit);
-    let data = {
-      totalRows: count,
-      totalPages: totalPages,
-      users: rows,
-    };
-    return {
-      EM: "Get data success",
-      EC: 0,
-      DT: data,
-    };
+    let data = { totalRows: count, totalPages: totalPages, users: rows, };
+    return { EM: "Get data success", EC: 0, DT: data, };
   } catch (error) {
-    return {
-      EM: "Something wrongs with services",
-      EC: 1,
-      DT: [],
-    };
+    return { EM: "Something wrongs with services", EC: 1, DT: [], };
+  }
+};
+
+const getUserById = async (idUser) => {
+  try {
+    let users = await db.User.findOne({
+      attributes: ["id", "image", "lastName", "firstName", "phone", "email", "cities", "districts", "address", "sex"],
+      include: { model: db.Group, attributes: ["id", "name", "description"] },
+      where: { id: idUser }
+    });
+    if (users) {
+      return { EM: "Get data success", EC: 0, DT: users, };
+    } else {
+      return { EM: "Get data success", EC: 0, DT: [], };
+    }
+  } catch (error) {
+    console.log(error);
+    return { EM: "Something wrongs with services", EC: 1, DT: [], };
   }
 };
 
 // Check Email
 const checkEmailExist = async (email) => {
   let user = await db.User.findOne({
-    where: {
-      email: email,
-    },
+    where: { email: email, },
   });
   if (user) {
     return true;
@@ -79,9 +72,7 @@ const checkEmailExist = async (email) => {
 // Check Phone
 const checkPhoneExist = async (phone) => {
   let user = await db.User.findOne({
-    where: {
-      phone: phone,
-    },
+    where: { phone: phone, },
   });
   if (user) {
     return true;
@@ -101,21 +92,13 @@ const createNewUser = async (data) => {
     // Check Email
     let isEmailExist = await checkEmailExist(data.email);
     if (isEmailExist) {
-      return {
-        EM: "The email is already exist",
-        EC: 1,
-        DT: "email",
-      };
+      return { EM: "The email is already exist", EC: 1, DT: "email", };
     }
 
     // Check Phone
     let isPhoneExist = await checkPhoneExist(data.phone);
     if (isPhoneExist) {
-      return {
-        EM: "The phone is already exist",
-        EC: 1,
-        DT: "phone",
-      };
+      return { EM: "The phone is already exist", EC: 1, DT: "phone", };
     }
 
     // Hash Password
@@ -124,6 +107,8 @@ const createNewUser = async (data) => {
     await db.User.create({
       lastName: data.lastName,
       firstName: data.firstName,
+      cities: data.cities,
+      districts: data.districts,
       address: data.address,
       phone: data.phone,
       password: hashPassword,
@@ -131,17 +116,9 @@ const createNewUser = async (data) => {
       sex: data.sex,
       groupId: data.groupId,
     });
-    return {
-      EM: "A user is created successfully!",
-      EC: 0,
-      DT: [],
-    };
+    return { EM: "A user is created successfully!", EC: 0, DT: [], };
   } catch (error) {
-    return {
-      EM: "Something wrongs with services",
-      EC: 1,
-      DT: [],
-    };
+    return { EM: "Something wrongs with services", EC: 1, DT: [], };
   }
 };
 
@@ -153,9 +130,12 @@ const updateUser = async (data) => {
       },
     });
     if (user) {
-      const updateUser = await user.update({ lastName: data.lastName, firstName: data.firstName, address: data.address, sex: data.sex, groupId: data.groupId });
-
-      let { id, lastName, firstName, phone, address, sex } = updateUser;
+      let uploadImage = data.image
+      if (!data?.image.startsWith("https://res.cloudinary.com")) {
+        uploadImage = await UploadCloud(data.image, "imageAvatar")
+      }
+      const updateUser = await user.update({ lastName: data.lastName, firstName: data.firstName, cities: data.cities, districts: data.districts, address: data.address, sex: data.sex, groupId: data.groupId, image: uploadImage });
+      let { id, lastName, firstName, phone, cities, districts, address, sex, image } = updateUser;
       let groupWithRoles = await getGroupWithRoles(updateUser);
       let payload = {
         user: {
@@ -163,24 +143,18 @@ const updateUser = async (data) => {
           firstName: firstName,
           lastName: lastName,
           phone: phone,
+          cities: cities,
+          districts: districts,
           address: address,
           email: user.email,
-          sex: sex
+          sex: sex,
+          image: image
         },
         groupWithRoles,
       };
       let token = await createJWT(payload);
-      await user.update({
-        refreshToken: token,
-      });
-      return {
-        EM: "Update user success",
-        EC: 0,
-        DT: {
-          access_token: token,
-          groupWithRoles,
-        },
-      };
+      await user.update({ refreshToken: token, });
+      return { EM: "Update user success", EC: 0, DT: { access_token: token, groupWithRoles, }, };
     } else {
       return { EM: "User not exist", EC: 2, DT: [], };
     }
@@ -199,25 +173,13 @@ const deleteOneUser = async (id) => {
     });
     if (user) {
       await user.destroy();
-      return {
-        EM: "Delete user success",
-        EC: 0,
-        DT: [],
-      };
+      return { EM: "Delete user success", EC: 0, DT: [], };
     } else {
-      return {
-        EM: "User not exist",
-        EC: 2,
-        DT: [],
-      };
+      return { EM: "User not exist", EC: 2, DT: [], };
     }
   } catch (error) {
-    return {
-      EM: "Something wrongs with services",
-      EC: 1,
-      DT: [],
-    };
+    return { EM: "Something wrongs with services", EC: 1, DT: [], };
   }
 };
 
-module.exports = { getAllUser, getUserWithPagination, createNewUser, updateUser, deleteOneUser };
+module.exports = { getAllUser, getUserById, getUserWithPagination, createNewUser, updateUser, deleteOneUser };

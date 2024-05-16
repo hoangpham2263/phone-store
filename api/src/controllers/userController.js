@@ -10,6 +10,14 @@ const readFunc = async (req, res) => {
         EC: data.EC,
         DT: data.DT,
       });
+    } else if (req.query.idUser) {
+      let { idUser } = req.query
+      let data = await userService.getUserById(+idUser);
+      return res.status(200).json({
+        EM: data.EM,
+        EC: data.EC,
+        DT: data.DT,
+      });
     } else {
       let data = await userService.getAllUser();
       return res.status(200).json({

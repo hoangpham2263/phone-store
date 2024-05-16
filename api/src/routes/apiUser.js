@@ -7,6 +7,8 @@ import roleController from "../controllers/roleController";
 import productController from "../controllers/productController";
 import categoriesController from "../controllers/categoriesController";
 import brandController from "../controllers/brandController";
+import citiesController from "../controllers/citiesController";
+import districtsController from "../controllers/districtsController";
 import cartController from "../controllers/cartController";
 import { checkUserJWT, checkUserPermission } from "../middleware/JWTAction";
 
@@ -23,6 +25,8 @@ const adminRoute = (app) => {
   // Read JWT
   router.get("/user/jwt-token", registerLoginController.readJWT);
   router.get("/user/read", userController.readFunc);
+  router.put("/user/update", authMiddlewares, userController.updateFunc);
+
   router.get("/group/read", groupController.readFunc);
   router.get("/group-role/read", groupRoleController.readFunc);
   router.get("/role/read", roleController.readFunc);
@@ -31,6 +35,8 @@ const adminRoute = (app) => {
   router.get("/product/read", productController.readFunc);
   router.get("/categories/read", categoriesController.readFunc);
   router.get("/brand/read", brandController.readFunc);
+  router.get("/cities/read", citiesController.readFunc);
+  router.get("/districts/read", districtsController.readFunc);
 
   // CRUD cart need login
   router.get("/cart/read", cartController.readFunc);
