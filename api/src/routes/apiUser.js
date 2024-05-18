@@ -44,6 +44,9 @@ const adminRoute = (app) => {
   router.put("/cart/update", cartController.updateFunc);
   router.delete("/cart/delete", cartController.deleteFunc);
 
+  // PayOS
+  router.post("/payment/create-payment-link", cartController.readFunc);
+
   return app.use("/api/v1", router);
 };
 

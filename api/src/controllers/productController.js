@@ -33,6 +33,9 @@ const readFunc = async (req, res) => {
   } catch (error) {
     return res.status(500).json({ EM: "Error from server", EC: -1, DT: [], });
   }
+
+
+  
 };
 
 // Read Product Detail

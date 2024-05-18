@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       User.belongsTo(models.Group);
       User.hasMany(models.Cart, { foreignKey: 'userId' });
+      User.hasMany(models.Order, { foreignKey: 'userId' });
     }
   }
   User.init(

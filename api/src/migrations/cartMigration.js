@@ -36,6 +36,9 @@ module.exports = {
       slug: {
         type: Sequelize.STRING,
       },
+      orderId: {
+        type: Sequelize.INTEGER,
+      },
       userId: {
         type: Sequelize.INTEGER,
       },

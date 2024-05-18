@@ -4,9 +4,14 @@ const { Op } = require("sequelize");
 const readCart = async (idUser) => {
   try {
     let data = await db.Cart.findAll({
-      attributes: ["id", "title", "image", "color", "capacity", "price", "priceDiscount", "percentDiscount", "slug", "userId"],
+      attributes: ["id", "title", "image", "color", "capacity", "price", "priceDiscount", "percentDiscount", "slug", "orderId", "userId"],
       order: [["userId", "ASC"]],
-      where: { userId: idUser },
+      where: {
+        [Op.and]: [
+          { userId: idUser },
+          { orderId: null }
+        ]
+      },
     });
     return { EM: "Read cart success", EC: 0, DT: data, };
   } catch (error) {
@@ -21,7 +26,12 @@ const readCartTotal = async (idUser) => {
     let data = await db.Cart.findAll({
       attributes: ["id", "userId"],
       order: [["userId", "ASC"]],
-      where: { userId: idUser },
+      where: {
+        [Op.and]: [
+          { userId: idUser },
+          { orderId: null }
+        ]
+      },
     });
     if (data.length > 0) { countProduct = data.length }
     return { EM: "Read cart success", EC: 0, DT: countProduct, };
@@ -37,9 +47,14 @@ const readCartWithIdUser = async (page, limit, idUser) => {
     let { count, rows } = await db.Cart.findAndCountAll({
       offset: offset,
       limit: limit,
-      attributes: ["id", "title", "image", "color", "capacity", "price", "priceDiscount", "percentDiscount", "slug", "userId"],
+      attributes: ["id", "title", "image", "color", "capacity", "price", "priceDiscount", "percentDiscount", "slug", "orderId", "userId"],
       order: [["userId", "ASC"]],
-      where: { userId: idUser },
+      where: {
+        [Op.and]: [
+          { userId: idUser },
+          { orderId: null }
+        ]
+      },
       include: [
         { model: db.User, attributes: ["id", "lastName", "firstName", "phone", "email", "address", "sex"] },
       ],
@@ -120,11 +135,4 @@ const deleteCart = async (idUser, idProduct) => {
   }
 };
 
-module.exports = {
-  readCart,
-  readCartTotal,
-  readCartWithIdUser,
-  createCart,
-  updateCart,
-  deleteCart,
-};
+module.exports = { readCart, readCartTotal, readCartWithIdUser, createCart, updateCart, deleteCart };

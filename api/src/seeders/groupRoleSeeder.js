@@ -158,22 +158,26 @@ module.exports = {
         //   roleId: 28,
         // },
         // Customer
-        // {
-        //   groupId: 3,
-        //   roleId: 25,
-        // },
-        // {
-        //   groupId: 3,
-        //   roleId: 26,
-        // },
-        // {
-        //   groupId: 3,
-        //   roleId: 27,
-        // },
-        // {
-        //   groupId: 3,
-        //   roleId: 28,
-        // },
+        {
+          groupId: 3,
+          roleId: 3,
+        },
+        {
+          groupId: 3,
+          roleId: 29,
+        },
+        {
+          groupId: 3,
+          roleId: 30,
+        },
+        {
+          groupId: 3,
+          roleId: 31,
+        },
+        {
+          groupId: 3,
+          roleId: 32,
+        },
       ],
       {}
     );
