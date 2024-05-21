@@ -10,7 +10,9 @@ import brandController from "../controllers/brandController";
 import citiesController from "../controllers/citiesController";
 import districtsController from "../controllers/districtsController";
 import cartController from "../controllers/cartController";
+import orderController from "../controllers/orderController";
 import { checkUserJWT, checkUserPermission } from "../middleware/JWTAction";
+import SendMail from '../utility/SendMail'
 
 const router = express.Router();
 
@@ -40,12 +42,18 @@ const adminRoute = (app) => {
 
   // CRUD cart need login
   router.get("/cart/read", cartController.readFunc);
+  router.get("/order/read-cart", cartController.readFuncCartOrderId);
   router.post("/cart/create", cartController.createFunc);
   router.put("/cart/update", cartController.updateFunc);
   router.delete("/cart/delete", cartController.deleteFunc);
 
-  // PayOS
-  router.post("/payment/create-payment-link", cartController.readFunc);
+  // CRUD order need login
+  router.get("/order/read", orderController.readFunc);
+  router.post("/order/create", orderController.createFunc);
+  router.delete("/order/delete", orderController.deleteFunc);
+
+  // Send Mail 
+  router.post("/send-mail", SendMail);
 
   return app.use("/api/v1", router);
 };

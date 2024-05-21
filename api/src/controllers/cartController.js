@@ -20,6 +20,18 @@ const readFunc = async (req, res) => {
   }
 };
 
+// Read cart with orderId
+const readFuncCartOrderId = async (req, res) => {
+  try {
+    let { idOrder } = req.query;
+    let data = await cartService.readCartWithOrderId(+idOrder);
+    return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ EM: "Error from server", EC: -1, DT: [], });
+  }
+};
+
 const createFunc = async (req, res) => {
   try {
     let data = await cartService.createCart(req.body.data);
@@ -31,21 +43,14 @@ const createFunc = async (req, res) => {
 };
 
 const updateFunc = async (req, res) => {
-  // try {
-  //   let data = await cartService.updateRole(req.body.data);
-  //   return res.status(200).json({
-  //     EM: data.EM,
-  //     EC: data.EC,
-  //     DT: data.DT,
-  //   });
-  // } catch (error) {
-  //   console.log(error);
-  //   return res.status(500).json({
-  //     EM: "Error from server",
-  //     EC: -1,
-  //     DT: [],
-  //   });
-  // }
+  try {
+    const { idCart, idOrder } = req.body
+    let data = await cartService.updateCart(idCart, idOrder);
+    return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ EM: "Error from server", EC: -1, DT: [], });
+  }
 };
 
 const deleteFunc = async (req, res) => {
@@ -59,9 +64,4 @@ const deleteFunc = async (req, res) => {
   }
 };
 
-module.exports = {
-  readFunc,
-  createFunc,
-  updateFunc,
-  deleteFunc,
-};
+module.exports = { readFunc, readFuncCartOrderId, createFunc, updateFunc, deleteFunc };

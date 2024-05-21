@@ -68,9 +68,25 @@ const readCartWithIdUser = async (page, limit, idUser) => {
   }
 };
 
+// Read cart with orderId
+const readCartWithOrderId = async (idOrder) => {
+  try {
+    let data = await db.Cart.findAll({
+      attributes: ["id", "title", "image", "color", "capacity", "price", "priceDiscount", "percentDiscount", "slug", "orderId", "userId"],
+      order: [["id", "ASC"]],
+      where: { orderId: idOrder },
+    })
+    return { EM: "Read order success", EC: 0, DT: data, };
+  } catch (error) {
+    console.log(error);
+    return { EM: "Something wrongs with service", EC: 1, DT: [], };
+  }
+};
+
 const createCart = async (data) => {
   try {
-    const { title, image, color, capacity, price, priceDiscount, percentDiscount, slug, idUser } = data
+    console.log(data);
+    const { title, image, color, capacity, price, priceDiscount, percentDiscount, slug, idOrder, idUser } = data
     let isUser = await db.Cart.findOne({
       where: {
         [Op.and]: [
@@ -80,7 +96,7 @@ const createCart = async (data) => {
       },
     });
     if (isUser) {
-      return { EM: "Product is already in cart!", EC: 1, DT: [], };
+      return { EM: "Cart is already in cart!", EC: 1, DT: [], };
     }
     await db.Cart.create({
       title: title,
@@ -91,24 +107,20 @@ const createCart = async (data) => {
       priceDiscount: priceDiscount,
       percentDiscount: percentDiscount,
       slug: slug,
+      orderId: idOrder,
       userId: idUser
     });
-    return { EM: "Added product successfully!", EC: 0, DT: [], };
+    return { EM: "Added card successfully!", EC: 0, DT: isUser };
   } catch (error) {
     return { EM: "Something wrongs with services", EC: 1, DT: [], };
   }
 };
 
-const updateCart = async (data) => {
+const updateCart = async (idCart, idOrder) => {
   try {
-    let role = await db.Cart.findOne({
-      where: { id: data.id, },
-    });
+    let role = await db.Cart.findOne({ where: { id: idCart, }, });
     if (role) {
-      await role.update({
-        url: data.url,
-        description: data.description,
-      });
+      await role.update({ orderId: idOrder, });
       return { EM: "Update role success", EC: 0, DT: [], };
     } else {
       return { EM: "Cart not exist", EC: 2, DT: [], };
@@ -135,4 +147,4 @@ const deleteCart = async (idUser, idProduct) => {
   }
 };
 
-module.exports = { readCart, readCartTotal, readCartWithIdUser, createCart, updateCart, deleteCart };
+module.exports = { readCart, readCartTotal, readCartWithOrderId, readCartWithIdUser, createCart, updateCart, deleteCart };
