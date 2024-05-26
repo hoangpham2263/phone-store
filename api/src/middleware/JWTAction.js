@@ -33,18 +33,10 @@ const checkUserJWT = (req, res, next) => {
       req.user = data;
       next();
     } else {
-      return res.status(401).json({
-        EC: -1,
-        DT: [],
-        EM: "Not authenticated the user",
-      });
+      return res.status(401).json({ EC: -1, DT: [], EM: "Not authenticated the user", });
     }
   } else {
-    return res.status(401).json({
-      EC: -1,
-      DT: [],
-      EM: "Not authenticated the user",
-    });
+    return res.status(401).json({ EC: -1, DT: [], EM: "Not authenticated the user", });
   }
 };
 
@@ -54,11 +46,7 @@ const checkUserPermission = (req, res, next) => {
     let roles = req.user.groupWithRoles.Roles;
     let currentUrl = req.path;
     if (!roles || roles.length === 0) {
-      return res.status(403).json({
-        EC: -1,
-        DT: [],
-        EM: `You don't permission to access this resource...`,
-      });
+      return res.status(403).json({ EC: -1, DT: [], EM: `You don't permission to access this resource...`, });
     }
     let canAccess = roles.some((item) => {
       return item.url === currentUrl;
@@ -66,24 +54,11 @@ const checkUserPermission = (req, res, next) => {
     if (canAccess === true) {
       next();
     } else {
-      return res.status(403).json({
-        EC: -1,
-        DT: [],
-        EM: `You don't permission to access this resource...`,
-      });
+      return res.status(403).json({ EC: -1, DT: [], EM: `You don't permission to access this resource...`, });
     }
   } else {
-    return res.status(401).json({
-      EC: -1,
-      DT: [],
-      EM: "Not authenticated the user",
-    });
+    return res.status(401).json({ EC: -1, DT: [], EM: "Not authenticated the user", });
   }
 };
 
-module.exports = {
-  createJWT,
-  verifyToken,
-  checkUserJWT,
-  checkUserPermission,
-};
+module.exports = { createJWT, verifyToken, checkUserJWT, checkUserPermission };

@@ -25,7 +25,6 @@ app.use(function (req, res, next) {
   // Pass to next layer of middleware
   next();
 });
-// app.use(cors());
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false, limit: "50mb" }));
