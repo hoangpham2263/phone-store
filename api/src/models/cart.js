@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       price: DataTypes.FLOAT,
       priceDiscount: DataTypes.FLOAT,
       percentDiscount: DataTypes.INTEGER,
+      quantity: DataTypes.INTEGER,
       slug: DataTypes.STRING,
       orderId: DataTypes.INTEGER,
       userId: DataTypes.INTEGER,

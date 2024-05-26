@@ -62,6 +62,7 @@ const readProductWithCategoriesBrand = async (page, limit, categories, brand, ve
     return { EM: "Something wrongs with service", EC: 1, DT: [], };
   }
 };
+
 const readProductWithSearch = async (page, limit, search) => {
   try {
     let offset = (page - 1) * limit;
@@ -122,32 +123,7 @@ const readProductDetail = async (slug) => {
     return { EM: "Something wrongs with service", EC: 1, DT: [], };
   }
 };
-const readProductSort = async (page, limit, sort) => {
-  console.log(page)
-  console.log(limit)
-  console.log(sort)
-  try {
-    // let data = await db.Product.findAll({
-    //   where: {
-    //     [Op.and]: [
-    //       {
-    //         slug: { [Op.like]: `%${slugCut}%`, }
-    //       },
-    //       {
-    //         color: { [Op.contains]: color }
-    //       }
-    //     ]
-    //   },
-    //   attributes: ["id", "title", "price", "version", "quantity", "image", "capacity", "color", "percentDiscount", "slug", "categoriesId", "brandId"],
-    //   order: [["title", "DESC"]],
-    //   include: [{ model: db.Categories, attributes: ["id", "name"] }, { model: db.Brand, attributes: ["id", "name"] }],
-    // });
-    // return { EM: "Read product success", EC: 0, DT: data, };
-  } catch (error) {
-    console.log(error)
-    return { EM: "Something wrongs with service", EC: 1, DT: [], };
-  }
-};
+
 const createProduct = async (data) => {
   try {
     await db.Product.create({
@@ -205,4 +181,4 @@ const deleteProduct = async (id) => {
   }
 };
 
-module.exports = { readProduct, readProductSort, readProductWithCategoriesBrand, readProductWithSearch, readProductWithPagination, readProductDetail, readProductId, createProduct, updateProduct, deleteProduct };
+module.exports = { readProduct, readProductWithCategoriesBrand, readProductWithSearch, readProductWithPagination, readProductDetail, readProductId, createProduct, updateProduct, deleteProduct };

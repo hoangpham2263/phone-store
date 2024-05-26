@@ -17,7 +17,6 @@ const getAllUser = async () => {
       return { EM: "Get data success", EC: 0, DT: [], };
     }
   } catch (error) {
-    console.log(error);
     return { EM: "Something wrongs with services", EC: 1, DT: [], };
   }
 };
@@ -53,30 +52,21 @@ const getUserById = async (idUser) => {
       return { EM: "Get data success", EC: 0, DT: [], };
     }
   } catch (error) {
-    console.log(error);
     return { EM: "Something wrongs with services", EC: 1, DT: [], };
   }
 };
 
 // Check Email
 const checkEmailExist = async (email) => {
-  let user = await db.User.findOne({
-    where: { email: email, },
-  });
-  if (user) {
-    return true;
-  }
+  let user = await db.User.findOne({ where: { email: email, } });
+  if (user) return true;
   return false;
 };
 
 // Check Phone
 const checkPhoneExist = async (phone) => {
-  let user = await db.User.findOne({
-    where: { phone: phone, },
-  });
-  if (user) {
-    return true;
-  }
+  let user = await db.User.findOne({ where: { phone: phone, } });
+  if (user) return true;
   return false;
 };
 
@@ -91,15 +81,11 @@ const createNewUser = async (data) => {
   try {
     // Check Email
     let isEmailExist = await checkEmailExist(data.email);
-    if (isEmailExist) {
-      return { EM: "The email is already exist", EC: 1, DT: "email", };
-    }
+    if (isEmailExist) return { EM: "The email is already exist", EC: 1, DT: "email", };
 
     // Check Phone
     let isPhoneExist = await checkPhoneExist(data.phone);
-    if (isPhoneExist) {
-      return { EM: "The phone is already exist", EC: 1, DT: "phone", };
-    }
+    if (isPhoneExist) return { EM: "The phone is already exist", EC: 1, DT: "phone", };
 
     // Hash Password
     let hashPassword = await hashUserPassword(data.password);
@@ -124,16 +110,10 @@ const createNewUser = async (data) => {
 
 const updateUser = async (data) => {
   try {
-    let user = await db.User.findOne({
-      where: {
-        id: data.id,
-      },
-    });
+    let user = await db.User.findOne({ where: { id: data.id, }, });
     if (user) {
       let uploadImage = data.image
-      if (!data?.image.startsWith("https://res.cloudinary.com")) {
-        uploadImage = await UploadCloud(data.image, "imageAvatar")
-      }
+      if (!data?.image.startsWith("https://res.cloudinary.com")) { uploadImage = await UploadCloud(data.image, "imageAvatar") }
       const updateUser = await user.update({ lastName: data.lastName, firstName: data.firstName, cities: data.cities, districts: data.districts, address: data.address, sex: data.sex, groupId: data.groupId, image: uploadImage });
       let { id, lastName, firstName, phone, cities, districts, address, sex, image } = updateUser;
       let groupWithRoles = await getGroupWithRoles(updateUser);
@@ -159,18 +139,13 @@ const updateUser = async (data) => {
       return { EM: "User not exist", EC: 2, DT: [], };
     }
   } catch (error) {
-    console.log(error);
     return { EM: "Something wrongs with services", EC: 1, DT: [], };
   }
 };
 
 const deleteOneUser = async (id) => {
   try {
-    let user = await db.User.findOne({
-      where: {
-        id: id,
-      },
-    });
+    let user = await db.User.findOne({ where: { id: id, }, });
     if (user) {
       await user.destroy();
       return { EM: "Delete user success", EC: 0, DT: [], };

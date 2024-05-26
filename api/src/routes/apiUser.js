@@ -13,6 +13,7 @@ import cartController from "../controllers/cartController";
 import orderController from "../controllers/orderController";
 import { checkUserJWT, checkUserPermission } from "../middleware/JWTAction";
 import SendMail from '../utility/SendMail'
+import sendMailContact from '../utility/SendMailContact'
 
 const router = express.Router();
 
@@ -32,7 +33,6 @@ const adminRoute = (app) => {
   router.get("/group/read", groupController.readFunc);
   router.get("/group-role/read", groupRoleController.readFunc);
   router.get("/role/read", roleController.readFunc);
-  router.get("/product/read/sort", productController.readFuncSort);
   router.get("/product/read/:slug", productController.readFuncDetail);
   router.get("/product/read", productController.readFunc);
   router.get("/categories/read", categoriesController.readFunc);
@@ -43,6 +43,7 @@ const adminRoute = (app) => {
   // CRUD cart need login
   router.get("/cart/read", cartController.readFunc);
   router.get("/order/read-cart", cartController.readFuncCartOrderId);
+  router.post("/cart/add", cartController.addFunc);
   router.post("/cart/create", cartController.createFunc);
   router.put("/cart/update", cartController.updateFunc);
   router.delete("/cart/delete", cartController.deleteFunc);
@@ -54,6 +55,7 @@ const adminRoute = (app) => {
 
   // Send Mail 
   router.post("/send-mail", SendMail);
+  router.post("/send-mail-contact", sendMailContact);
 
   return app.use("/api/v1", router);
 };

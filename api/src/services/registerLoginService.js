@@ -7,27 +7,15 @@ import { createJWT } from "../middleware/JWTAction";
 
 // Check Email
 const checkEmailExist = async (email) => {
-  let user = await db.User.findOne({
-    where: {
-      email: email,
-    },
-  });
-  if (user) {
-    return true;
-  }
+  let user = await db.User.findOne({ where: { email: email, }, });
+  if (user) { return true; }
   return false;
 };
 
 // Check Phone
 const checkPhoneExist = async (phone) => {
-  let user = await db.User.findOne({
-    where: {
-      phone: phone,
-    },
-  });
-  if (user) {
-    return true;
-  }
+  let user = await db.User.findOne({ where: { phone: phone, }, });
+  if (user) { return true; }
   return false;
 };
 
@@ -43,23 +31,11 @@ const registerNewUser = async (rawUserData) => {
   try {
     // Check Email
     let isEmailExist = await checkEmailExist(rawUserData.email);
-    if (isEmailExist) {
-      return {
-        EM: "The email is already exist",
-        EC: 1,
-        DT: "",
-      };
-    }
+    if (isEmailExist) return { EM: "The email is already exist", EC: 1, DT: "", };
 
     // Check Phone
     let isPhoneExist = await checkPhoneExist(rawUserData.phone);
-    if (isPhoneExist) {
-      return {
-        EM: "The phone is already exist",
-        EC: 1,
-        DT: "",
-      };
-    }
+    if (isPhoneExist) return { EM: "The phone is already exist", EC: 1, DT: "", };
 
     // Hash Password
     let hashPassword = await hashUserPassword(rawUserData.password);
@@ -74,32 +50,18 @@ const registerNewUser = async (rawUserData) => {
       groupId: 3,
     });
 
-    return {
-      EM: "A user is created successfully!",
-      EC: 0,
-      DT: "",
-    };
+    return { EM: "A user is created successfully!", EC: 0, DT: "", };
   } catch (error) {
-    return {
-      EM: "Something wrongs with services",
-      EC: 1,
-      DT: [],
-    };
+    return { EM: "Something wrongs with services", EC: 1, DT: [], };
   }
 };
 
 // Login
-const checkPassword = async (inputPassword, hashPassword) => {
-  return bcrypt.compareSync(inputPassword, hashPassword); // true or false
-};
+const checkPassword = async (inputPassword, hashPassword) => { return bcrypt.compareSync(inputPassword, hashPassword) };
 
 const handleLoginUser = async (data) => {
   try {
-    let user = await db.User.findOne({
-      where: {
-        [Op.or]: [{ email: data.valueLogin }, { phone: data.valueLogin }],
-      },
-    });
+    let user = await db.User.findOne({ where: { [Op.or]: [{ email: data.valueLogin }, { phone: data.valueLogin }], }, });
     if (user) {
       let isCorrectPassword = await checkPassword(data.password, user.password);
       if (isCorrectPassword) {
@@ -121,31 +83,13 @@ const handleLoginUser = async (data) => {
           groupWithRoles,
         };
         let token = await createJWT(payload);
-        await user.update({
-          refreshToken: token,
-        });
-        return {
-          EM: "Login user success",
-          EC: 0,
-          DT: {
-            access_token: token,
-            groupWithRoles,
-          },
-        };
+        await user.update({ refreshToken: token, });
+        return { EM: "Login user success", EC: 0, DT: { access_token: token, groupWithRoles, }, };
       }
     }
-    return {
-      EM: "Your email/phone number or password is incorrect!",
-      EC: 1,
-      DT: [],
-    };
+    return { EM: "Your email/phone number or password is incorrect!", EC: 1, DT: [], };
   } catch (error) {
-    console.log(error);
-    return {
-      EM: "Something wrongs with services",
-      EC: 1,
-      DT: [],
-    };
+    return { EM: "Something wrongs with services", EC: 1, DT: [], };
   }
 };
 

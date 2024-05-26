@@ -10,7 +10,6 @@ const readOrder = async (idUser) => {
     })
     return { EM: "Read order success", EC: 0, DT: data, };
   } catch (error) {
-    console.log(error);
     return { EM: "Something wrongs with service", EC: 1, DT: [], };
   }
 };
@@ -28,7 +27,6 @@ const readOrderWithPagination = async (page, limit, idUser) => {
     let data = { totalRows: count, totalPages: totalPages, order: rows, };
     return { EM: "Read order success", EC: 0, DT: data, };
   } catch (error) {
-    console.log(error);
     return { EM: "Something wrongs with service", EC: 1, DT: [], };
   }
 };
@@ -36,55 +34,17 @@ const readOrderWithPagination = async (page, limit, idUser) => {
 // Create Order
 const createOrder = async (idUser) => {
   try {
-    let data = await db.Order.create({
-      userId: idUser,
-    });
+    let data = await db.Order.create({ userId: idUser, });
     return { EM: "A order is created successfully!", EC: 0, DT: data, };
   } catch (error) {
     return { EM: "Something wrongs with services", EC: 1, DT: [], };
   }
 };
 
-// Update Order
-// const updateOrder = async (data) => {
-//   try {
-//     let order = await db.Order.findOne({
-//       where: {
-//         id: data.id,
-//       },
-//     });
-//     if (order) {
-//       await order.update({
-//         name: data.name,
-//       });
-//       return {
-//         EM: "Update order success",
-//         EC: 0,
-//         DT: [],
-//       };
-//     } else {
-//       return {
-//         EM: "Order not exist",
-//         EC: 2,
-//         DT: [],
-//       };
-//     }
-//   } catch (error) {
-//     console.log(error);
-//     return {
-//       EM: "Something wrongs with services",
-//       EC: 1,
-//       DT: [],
-//     };
-//   }
-// };
-
 // Delete Order
 const deleteOrder = async (id) => {
   try {
-    let order = await db.Order.findOne({
-      where: { id: id, },
-    });
+    let order = await db.Order.findOne({ where: { id: id, }, });
     if (order) {
       await order.destroy();
       return { EM: "Delete order success", EC: 0, DT: [], };
@@ -96,10 +56,4 @@ const deleteOrder = async (id) => {
   }
 };
 
-module.exports = {
-  readOrder,
-  readOrderWithPagination,
-  createOrder,
-  // updateOrder,
-  deleteOrder,
-};
+module.exports = { readOrder, readOrderWithPagination, createOrder, deleteOrder };

@@ -13,7 +13,6 @@ const readFunc = async (req, res) => {
     }
     return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ EM: "Error from server", EC: -1, DT: [], });
   }
 };
@@ -22,9 +21,7 @@ const readFunc = async (req, res) => {
 const createFunc = async (req, res) => {
   try {
     const { idUser } = req.body;
-    if (!idUser) {
-      return res.status(200).json({ EM: "Missing Required Parameters", EC: 1, DT: [], });
-    }
+    if (!idUser) return res.status(200).json({ EM: "Missing Required Parameters", EC: 1, DT: [], });
     let data = await orderService.createOrder(idUser);
     return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
   } catch (error) {
@@ -33,24 +30,6 @@ const createFunc = async (req, res) => {
   }
 };
 
-// Update Order
-// const updateFunc = async (req, res) => {
-//   try {
-//     let data = await orderService.updateOrder(req.body.data);
-//     return res.status(200).json({
-//       EM: data.EM,
-//       EC: data.EC,
-//       DT: data.DT,
-//     });
-//   } catch (error) {
-//     return res.status(500).json({
-//       EM: "Error from server",
-//       EC: -1,
-//       DT: [],
-//     });
-//   }
-// };
-
 // Delete Order
 const deleteFunc = async (req, res) => {
   try {
@@ -58,7 +37,6 @@ const deleteFunc = async (req, res) => {
     let data = await orderService.deleteOrder(id);
     return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ EM: "Error from server", EC: -1, DT: "", });
   }
 };

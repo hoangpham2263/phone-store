@@ -1,4 +1,3 @@
-import { where } from "sequelize";
 import db from "../models/index";
 
 const readCities = async () => {
@@ -7,18 +6,9 @@ const readCities = async () => {
       attributes: ["id", "name"],
       order: [["id", "ASC"]],
     });
-    return {
-      EM: "Read cities success",
-      EC: 0,
-      DT: data,
-    };
+    return { EM: "Read cities success", EC: 0, DT: data, };
   } catch (error) {
-    console.log(error);
-    return {
-      EM: "Something wrongs with service",
-      EC: 1,
-      DT: [],
-    };
+    return { EM: "Something wrongs with service", EC: 1, DT: [], };
   }
 };
 
@@ -29,21 +19,10 @@ const readCitiesWithId = async (id) => {
       order: [["id", "ASC"]],
       where: { id: id }
     });
-    return {
-      EM: "Read cities success",
-      EC: 0,
-      DT: data,
-    };
+    return { EM: "Read cities success", EC: 0, DT: data, };
   } catch (error) {
-    console.log(error);
-    return {
-      EM: "Something wrongs with service",
-      EC: 1,
-      DT: [],
-    };
+    return { EM: "Something wrongs with service", EC: 1, DT: [], };
   }
 };
 
-module.exports = {
-  readCities, readCitiesWithId
-};
+module.exports = { readCities, readCitiesWithId };

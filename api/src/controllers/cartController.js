@@ -1,21 +1,19 @@
 import cartService from "../services/cartService";
 
 const readFunc = async (req, res) => {
-  const { page, limit, idUser } = req.query
   try {
+    let data
+    const { page, limit, idUser } = req.query
     if (page && limit && idUser) {
       let { page, limit } = req.query;
-      let data = await cartService.readCartWithIdUser(+page, +limit, +idUser);
-      return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
+      data = await cartService.readCartWithIdUser(+page, +limit, +idUser);
     } else if (idUser) {
-      let data = await cartService.readCartTotal(+idUser);
-      return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
+      data = await cartService.readCartTotal(+idUser);
     } else {
-      let data = await cartService.readCart(+userId);
-      return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
+      data = await cartService.readCart(+userId);
     }
+    return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ EM: "Error from server", EC: -1, DT: [], });
   }
 };
@@ -27,7 +25,6 @@ const readFuncCartOrderId = async (req, res) => {
     let data = await cartService.readCartWithOrderId(+idOrder);
     return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ EM: "Error from server", EC: -1, DT: [], });
   }
 };
@@ -37,7 +34,15 @@ const createFunc = async (req, res) => {
     let data = await cartService.createCart(req.body.data);
     return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
   } catch (error) {
-    console.log(error);
+    return res.status(500).json({ EM: "Error from server", EC: -1, DT: [], });
+  }
+};
+
+const addFunc = async (req, res) => {
+  try {
+    let data = await cartService.addCart(req.body.data);
+    return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
+  } catch (error) {
     return res.status(500).json({ EM: "Error from server", EC: -1, DT: [], });
   }
 };
@@ -48,7 +53,6 @@ const updateFunc = async (req, res) => {
     let data = await cartService.updateCart(idCart, idOrder);
     return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ EM: "Error from server", EC: -1, DT: [], });
   }
 };
@@ -59,9 +63,8 @@ const deleteFunc = async (req, res) => {
     let data = await cartService.deleteCart(+idUser, +idProduct);
     return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ EM: "Error from server", EC: -1, DT: "", });
   }
 };
 
-module.exports = { readFunc, readFuncCartOrderId, createFunc, updateFunc, deleteFunc };
+module.exports = { readFunc, readFuncCartOrderId, createFunc, addFunc, updateFunc, deleteFunc };

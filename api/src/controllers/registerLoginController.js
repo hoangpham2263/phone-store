@@ -5,33 +5,16 @@ const registerUser = async (req, res) => {
   try {
     const { lastName, firstName, email, password, phone, sex } = req.body.data;
     if (!lastName || !firstName || !email || !password || !phone || !sex) {
-      return res.status(200).json({
-        EM: "Missing Required Parameters",
-        EC: 1,
-        DT: "",
-      });
+      return res.status(200).json({ EM: "Missing Required Parameters", EC: 1, DT: "", });
     }
     if (password && password.length < 6) {
-      return res.status(200).json({
-        EM: "Your password must have more than 6 letters", // error message
-        EC: "1", // error code
-        DT: "", // data
-      });
+      return res.status(200).json({ EM: "Your password must have more than 6 letters", EC: "1", DT: "", });
     }
-
     let data = await registerLoginService.registerNewUser(req.body.data);
 
-    return res.status(200).json({
-      EM: data.EM,
-      EC: data.EC,
-      DT: data.DT,
-    });
+    return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
   } catch (error) {
-    return res.status(500).json({
-      EM: "Error from server",
-      EC: -1,
-      DT: "",
-    });
+    return res.status(500).json({ EM: "Error from server", EC: -1, DT: "", });
   }
 };
 
@@ -51,7 +34,6 @@ const loginUser = async (req, res) => {
 
     return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ EM: "Error from server", EC: -1, DT: [], });
   }
 };
@@ -66,12 +48,7 @@ const readJWT = async (req, res) => {
       return res.status(200).json({ EM: "JWT not exists success", EC: "1", DT: [], });
     }
   } catch (error) {
-    console.log(error);
-    return res.status(500).json({
-      EM: "Error from server",
-      EC: -1,
-      DT: [],
-    });
+    return res.status(500).json({ EM: "Error from server", EC: -1, DT: [], });
   }
 };
 
@@ -87,7 +64,6 @@ const logoutUser = async (req, res) => {
       return res.status(200).json({ EM: "Logout user error", EC: 1, DT: [], });
     }
   } catch (error) {
-    console.log(error);
     return res.status(500).json({ EM: "Error from server", EC: -1, DT: [], });
   }
 };

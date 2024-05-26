@@ -30,6 +30,7 @@ async function sendEmail(req, res) {
                         <th style="border: 1px solid #ddd; padding: 8px;">Giá</th>
                         <th style="border: 1px solid #ddd; padding: 8px;">Màu</th>
                         <th style="border: 1px solid #ddd; padding: 8px;">Dung lượng</th>
+                        <th style="border: 1px solid #ddd; padding: 8px;">Số lượng</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,6 +44,7 @@ async function sendEmail(req, res) {
                             <td style="border: 1px solid #ddd; padding: 8px;">${formatNumber(product?.priceDiscount)}₫</td>
                             <td style="border: 1px solid #ddd; padding: 8px;">${product?.color}</td>
                             <td style="border: 1px solid #ddd; padding: 8px;">${product?.capacity}</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">${product?.quantity}</td>
                         </tr>
                     `).join('')}
                 </tbody>
@@ -61,7 +63,6 @@ async function sendEmail(req, res) {
             subject: "Hoá Đơn Thanh Toán Sản Phẩm",
             html: emailContent,
         });
-        console.log("Message sent: %s", info.messageId);
         res.status(200).send('Email sent successfully');
     } catch (error) {
         console.error("Error sending email:", error);

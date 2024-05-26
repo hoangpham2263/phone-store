@@ -33,6 +33,10 @@ module.exports = {
       percentDiscount: {
         type: Sequelize.INTEGER,
       },
+      quantity: {
+        type: Sequelize.INTEGER,
+        defaultValue: 1
+      },
       slug: {
         type: Sequelize.STRING,
       },

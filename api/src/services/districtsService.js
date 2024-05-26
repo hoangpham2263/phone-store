@@ -7,18 +7,9 @@ const readDistrictsWithDistricts = async (id) => {
       order: [["id", "ASC"]],
       where: { id: id }
     });
-    return {
-      EM: "Read districts success",
-      EC: 0,
-      DT: data,
-    };
+    return { EM: "Read districts success", EC: 0, DT: data, };
   } catch (error) {
-    console.log(error);
-    return {
-      EM: "Something wrongs with service",
-      EC: 1,
-      DT: [],
-    };
+    return { EM: "Something wrongs with service", EC: 1, DT: [], };
   }
 };
 
@@ -29,18 +20,9 @@ const readDistrictsWithCity = async (id) => {
       order: [["id", "ASC"]],
       where: { citiesId: id }
     });
-    return {
-      EM: "Read districts success",
-      EC: 0,
-      DT: data,
-    };
+    return { EM: "Read districts success", EC: 0, DT: data, };
   } catch (error) {
-    console.log(error);
-    return {
-      EM: "Something wrongs with service",
-      EC: 1,
-      DT: [],
-    };
+    return { EM: "Something wrongs with service", EC: 1, DT: [], };
   }
 };
 
@@ -50,21 +32,10 @@ const readDistricts = async () => {
       attributes: ["id", "name", "citiesId"],
       order: [["name", "ASC"]],
     });
-    return {
-      EM: "Read districts success",
-      EC: 0,
-      DT: data,
-    };
+    return { EM: "Read districts success", EC: 0, DT: data, };
   } catch (error) {
-    console.log(error);
-    return {
-      EM: "Something wrongs with service",
-      EC: 1,
-      DT: [],
-    };
+    return { EM: "Something wrongs with service", EC: 1, DT: [], };
   }
 };
 
-module.exports = {
-  readDistrictsWithCity, readDistricts, readDistrictsWithDistricts
-};
+module.exports = { readDistrictsWithCity, readDistricts, readDistrictsWithDistricts };
