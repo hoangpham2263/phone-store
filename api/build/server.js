@@ -1,13 +1,14 @@
-require("dotenv").config();
-import express from "express";
-import bodyParser from "body-parser";
-import cookieParser from "cookie-parser";
-import apiAdminRoute from "./routes/apiAdmin";
-import apiUserRoute from "./routes/apiUser";
-import connectDB from './config/connectDB';
+"use strict";
 
-const app = express();
-const PORT = process.env.PORT || 7000;
+var _express = _interopRequireDefault(require("express"));
+var _bodyParser = _interopRequireDefault(require("body-parser"));
+var _cookieParser = _interopRequireDefault(require("cookie-parser"));
+var _apiAdmin = _interopRequireDefault(require("./routes/apiAdmin"));
+var _apiUser = _interopRequireDefault(require("./routes/apiUser"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+require("dotenv").config();
+var app = (0, _express["default"])();
+var PORT = process.env.PORT || 7000;
 // Add headers before the routes are defined
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
@@ -28,20 +29,21 @@ app.use(function (req, res, next) {
 });
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false, limit: "50mb" }));
+app.use(_bodyParser["default"].urlencoded({
+  extended: false,
+  limit: "50mb"
+}));
 // parse application/json
-app.use(bodyParser.json({ limit: "50mb" }));
+app.use(_bodyParser["default"].json({
+  limit: "50mb"
+}));
 
 // config
-app.use(cookieParser());
+app.use((0, _cookieParser["default"])());
 
 // routes
-apiAdminRoute(app);
-apiUserRoute(app)
-
-// connect
-connectDB();
-
-app.listen(PORT, () => {
+(0, _apiAdmin["default"])(app);
+(0, _apiUser["default"])(app);
+app.listen(PORT, function () {
   console.log(">>> JWT Backend is running on the port = " + PORT);
 });
