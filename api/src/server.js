@@ -10,7 +10,12 @@ import cors from 'cors';
 const app = express();
 const PORT = process.env.PORT || 7000;
 
-app.use(cors());
+app.use(cors({
+  origin: process.env.REACT_URL,
+  methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'PATCH', 'DELETE'],
+  allowedHeaders: ['X-Requested-With', 'content-type'],
+  credentials: true
+}));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false, limit: "50mb" }));
