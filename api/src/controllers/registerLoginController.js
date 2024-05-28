@@ -34,7 +34,8 @@ const loginUser = async (req, res) => {
       httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000,
       domain: 'yourdomain.comecommerce-backend-7s9o.onrender.com',
-      path: '/'
+      path: '/',
+      httpOnly: false
     });
 
     return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
