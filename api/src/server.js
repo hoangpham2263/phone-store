@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import apiAdminRoute from "./routes/apiAdmin";
 import apiUserRoute from "./routes/apiUser";
 import connectDB from './config/connectDB';
+import cors from 'cors';
 
 const app = express();
 const PORT = process.env.PORT || 7000;

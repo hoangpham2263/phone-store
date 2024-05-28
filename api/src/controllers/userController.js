@@ -40,8 +40,6 @@ const updateFunc = async (req, res) => {
     res.cookie("jwt", data.DT.access_token, {
       httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'Strict'
     });
     return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
   } catch (error) {
