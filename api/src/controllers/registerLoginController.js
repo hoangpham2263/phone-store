@@ -45,7 +45,7 @@ const loginUser = async (req, res) => {
 const readJWT = async (req, res) => {
   try {
     const cookie = req.cookies;
-    if (cookie.jwt) {
+    if (cookie) {
       return res.status(200).json({ EM: "Read JWT success", EC: "0", DT: cookie, });
     } else {
       return res.status(200).json({ EM: "JWT not exists success", EC: "1", DT: [], });
