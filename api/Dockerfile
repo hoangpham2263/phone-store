@@ -15,5 +15,5 @@ RUN npm run build-src
 
 CMD [ "npm","run","build" ]
 
-# docker build --tag node-docker .
-# docker run -p 8080:8080 -d node-docker
+# docker build --tag ecommerce-backend-docker .
+# docker run -p 8000:8000 -d ecommerce-backend-docker
