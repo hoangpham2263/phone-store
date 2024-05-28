@@ -30,7 +30,7 @@ const loginUser = async (req, res) => {
 
     let data = await registerLoginService.handleLoginUser(req.body.data);
 
-    res.cookie("jwt", data.DT.access_token, {
+    await res.cookie("jwt", data.DT.access_token, {
       httpOnly: false,
       maxAge: 24 * 60 * 60 * 1000,
     });
