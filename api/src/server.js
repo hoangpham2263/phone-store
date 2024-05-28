@@ -12,16 +12,7 @@ const PORT = 8000 || 7000;
 
 // Add headers before the routes are defined
 app.use(function (req, res, next) {
-  const allowedOrigins = [
-    "http://localhost:3000",
-    "https://ecommerce-frontend-dan0.onrender.com"
-  ];
-
-  const origin = req.headers.origin;
-
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
-  }
+  res.setHeader("Access-Control-Allow-Origin", "https://ecommerce-frontend-dan0.onrender.com");
 
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
 
