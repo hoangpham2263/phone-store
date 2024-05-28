@@ -33,6 +33,8 @@ const loginUser = async (req, res) => {
     res.cookie("jwt", data.DT.access_token, {
       httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000,
+      domain: 'yourdomain.comecommerce-backend-7s9o.onrender.com',
+      path: '/'
     });
 
     return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
