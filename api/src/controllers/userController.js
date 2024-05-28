@@ -37,7 +37,12 @@ const createFunc = async (req, res) => {
 const updateFunc = async (req, res) => {
   try {
     let data = await userService.updateUser(req.body.data);
-    res.cookie("jwt", data.DT.access_token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
+    res.cookie("jwt", data.DT.access_token, {
+      httpOnly: true,
+      maxAge: 24 * 60 * 60 * 1000,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'Strict'
+    });
     return res.status(200).json({ EM: data.EM, EC: data.EC, DT: data.DT, });
   } catch (error) {
     return res.status(500).json({ EM: "Error from server", EC: -1, DT: [], });

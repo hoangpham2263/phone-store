@@ -52,6 +52,7 @@ const registerNewUser = async (rawUserData) => {
 
     return { EM: "A user is created successfully!", EC: 0, DT: "", };
   } catch (error) {
+    console.log(error);
     return { EM: "Something wrongs with services", EC: 1, DT: [], };
   }
 };
