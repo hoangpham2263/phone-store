@@ -10,12 +10,7 @@ import cors from 'cors';
 const app = express();
 const PORT = process.env.PORT || 7000;
 
-app.use(cors({
-  origin: [process.env.REACT_URL, 'https://ecommerce-frontend-dan0.onrender.com'],
-  methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'PATCH', 'DELETE'],
-  allowedHeaders: ['X-Requested-With', 'content-type'],
-  credentials: true
-}));
+app.use(cors());
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false, limit: "50mb" }));
