@@ -8,10 +8,17 @@ import connectDB from './config/connectDB';
 import cors from 'cors';
 
 const app = express();
-const PORT = process.env.PORT || 7000;
+const PORT = 8000 || 7000;
 
+const allowedDomains = ["http://localhost:3000", "http://localhost:3001", "https://ecommerce-frontend-dan0.onrender.com"];
 app.use(cors({
-  origin: process.env.REACT_URL,
+  origin: function (origin, callback) {
+    if (!origin || allowedDomains.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'PATCH', 'DELETE'],
   allowedHeaders: ['X-Requested-With', 'content-type'],
   credentials: true
