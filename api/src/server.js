@@ -10,18 +10,23 @@ import cors from 'cors';
 const app = express();
 const PORT = 8000 || 7000;
 
-// Add headers before the routes are defined
 app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "https://ecommerce-frontend-dan0.onrender.com");
+  const allowedOrigins = [
+    "http://localhost:3000",
+    "https://ecommerce-frontend-dan0.onrender.com"
+  ];
 
+  const origin = req.headers.origin;
+
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
-
   res.setHeader("Access-Control-Allow-Headers", "X-Requested-With,content-type");
-
   res.setHeader("Access-Control-Allow-Credentials", true);
-
   next();
 });
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false, limit: "50mb" }));
 // parse application/json
