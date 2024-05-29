@@ -13,7 +13,7 @@ const PORT = 8000 || 7000;
 app.use(function (req, res, next) {
   const allowedOrigins = [
     "http://localhost:3000",
-    "https://ecommerce-frontend-dan0.onrender.com"
+    "https://quochoangdev.onrender.com"
   ];
 
   const origin = req.headers.origin;
