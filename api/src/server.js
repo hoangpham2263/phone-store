@@ -8,24 +8,12 @@ import connectDB from './config/connectDB';
 import cors from 'cors';
 
 const app = express();
-const PORT = 8000 || 7000;
+const PORT = process.env.PORT
 
-app.use(function (req, res, next) {
-  const allowedOrigins = [
-    "http://localhost:3000",
-    "https://quochoangdev.onrender.com"
-  ];
-
-  const origin = req.headers.origin;
-
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
-  }
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, PATCH, DELETE");
-  res.setHeader("Access-Control-Allow-Headers", "X-Requested-With,content-type");
-  res.setHeader("Access-Control-Allow-Credentials", true);
-  next();
-});
+app.use(cors({
+  origin: ["http://localhost:3000", "https://quochoangdev.onrender.com"],
+  credentials: true
+}));
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false, limit: "50mb" }));
