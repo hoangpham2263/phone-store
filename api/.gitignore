@@ -66,3 +66,6 @@ bower_components/
 
 # Restore OS-specific files
 .DS_Store
+.env.local
+.env.development
+.env.production
